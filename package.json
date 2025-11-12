@@ -1,0 +1,5 @@
+{
+  "homepage": "https://cognitioplus.github.io/lms",
+  "scripts": {
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d dist"
