@@ -21,7 +21,11 @@
                         accent: '#c80ec9',
                         success: '#D4AF37',
                         surface: '#ffffff',
-                        background: '#f7f7f7'
+                        background: '#f7f7f7',
+                        'primary-blue': '#2563eb',
+                        'light-blue': '#dbeafe',
+                        'accent-green': '#10b981',
+                        'warning-red': '#ef4444'
                     },
                     fontFamily: {
                         sans: ['Roboto Condensed', 'sans-serif'],
@@ -41,6 +45,7 @@
         body {
             background-color: var(--background);
             overflow-x: hidden;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
@@ -68,6 +73,36 @@
             height: 1.25rem;
             width: auto;
             object-fit: contain;
+        }
+        /* New Styles for Modules */
+        .skill-table thead th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+        }
+        .skill-table tbody td {
+            padding: 0.75rem 1rem;
+            vertical-align: top;
+        }
+        .skill-table a {
+            text-decoration: underline;
+        }
+        .knowledge-check ul {
+            margin-top: 0.25rem;
+        }
+        .knowledge-check li {
+            padding: 0.25rem 0;
+        }
+        .module-header:focus {
+            outline: none;
+        }
+        .accordion-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            background-color: #fff;
+        }
+        .arrow {
+            transition: transform 0.2s ease;
         }
     </style>
 </head>
@@ -152,6 +187,7 @@
         let activeMode = 'course'; // 'course', 'knowledge', 'settings'
         let expandedModule = 0; // Default open module
         let currentLesson = null; // Currently viewing lesson object
+
         // --- Data: Course Structure (Completed) ---
         const courseStructure = [
              {
@@ -189,34 +225,369 @@
             },
             {
                 moduleIndex: 4,
-                title: "Module 4: Support & Coping Skills",
+                title: "Module 4: Core Support, Communication and Basic Coping Skills",
                 lessons: [
-                    { lessonId: "M4L1", title: "Active Listening & Validation", content: `<div class="prose max-w-none"><p>Validation is the act of communicating that the other person's experience makes sense.</p><h3 class="font-heading text-lg mt-4">Otto Scharmer’s 4 Levels</h3><ol class="list-decimal ml-6"><li>Downloading</li><li>Factual</li><li>Empathic</li><li>Generative</li></ol></div>` },
-                    { lessonId: "M4L2", title: "Psychoeducation & Resilience", content: `<div class="prose max-w-none"><h3 class="font-heading text-lg text-primary">Simple Coping Skills</h3><ul class="list-disc ml-6"><li>Square Breathing (4-4-4-4).</li><li>Grounding (5-4-3-2-1).</li><li>Progressive Muscle Relaxation.</li></ul></div>` }
+                    { lessonId: "M4L1", title: "Core Support Skills (The LISTEN Phase)", content: `
+                        <div class="prose max-w-none">
+                            <p class="mb-6">Effective listening and communication form the bedrock of rapport and trust. These eight core skills guide the LISTEN phase:</p>
+
+                            <!-- Skills Table -->
+                            <div class="overflow-x-auto rounded-lg shadow-md mb-8">
+                                <table class="min-w-full divide-y divide-gray-200 skill-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="rounded-tl-lg">Skill</th>
+                                            <th>Purpose and Definition</th>
+                                            <th class="rounded-tr-lg">Video URL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr><td>1. Building Rapport</td><td>Establishing trust and comfort through authentic presence and non-verbal cues.</td><td><a href="https://youtu.be/TpPGddb93Kg" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>2. Showing Empathy</td><td>Connecting to the feelings and experiences of the client to communicate understanding.</td><td><a href="https://youtu.be/Jkg-1kLhTT4" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>3. Reflecting</td><td>Paraphrasing the client's statements to confirm understanding and deepen the conversation.</td><td><a href="https://youtu.be/ZhRTvXN_tJ8" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>4. Labeling Emotions</td><td>Helping the client accurately name and articulate their internal feelings.</td><td><a href="https://youtu.be/WCWtnChOdqI" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>5. Asking the Right Questions</td><td>Using open-ended questions that encourage detailed sharing and reflection.</td><td><a href="https://youtu.be/8Ow64RjY5zc" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>6. Giving No Advice</td><td>Guiding the client to their own solutions rather than telling them what to do (Non-maleficence).</td><td><a href="https://youtu.be/7OReldWvjds" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>7. Identifying Strengths</td><td>Pointing out the client’s inherent resilience and coping abilities to promote self-efficacy.</td><td><a href="https://youtu.be/znVeC6cdAVE" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                        <tr><td>8. Generative Listening</td><td>The deepest level of listening, focused on suspending judgment and co-creating new possibilities for the future.</td><td><a href="https://youtu.be/lxuYFw85hvw" target="_blank" class="text-indigo-600 hover:text-indigo-800">Watch Video</a></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Lesson: Stabilizing and Resilience</h3>
+                            
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Teaching Basic Stabilizing Techniques</h4>
+                            <p class="mb-3 text-gray-700">You can teach simple, evidence-based coping skills to promote immediate calmness:</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 text-gray-700">
+                                <li><strong>Diaphragmatic (Belly) Breathing:</strong> Slowing the breath to engage the parasympathetic nervous system. Guidance: Inhale through the nose for 4, hold for 2, exhale through the mouth for 6.</li>
+                                <li><strong>5-4-3-2-1 Grounding:</strong> A technique to shift focus away from distressing thoughts by engaging the five senses: Name 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Supporting Personal Resilience</h4>
+                            <p class="mb-4 text-gray-700">Introduce the Resilience Navigator as a tool to help them identify and strengthen their personal resources for coping with adversity and building long-term resilience.</p>
+                            <a href="https://cognitioplus.aiwaapp.live/resilience-navigator/" target="_blank" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white font-medium text-sm rounded-full hover:bg-indigo-700 transition duration-150">
+                                <i class="fas fa-external-link-alt mr-2"></i> Resilience Navigator Tool
+                            </a>
+
+                            <!-- Embedded Content -->
+                            <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <h4 class="font-bold text-blue-800 mb-2">Embedded Content</h4>
+                                <p class="text-blue-700">Slide Presentation: <a href="https://www.canva.com/design/DAG4hEK0g5s/k2dXww5ZcePOt6hehkawhw/view?utm_content=DAG4hEK0g5s&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1d83ec9b53" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Core Support & Communication Slides</a></p>
+                            </div>
+
+                            <!-- Reflection Prompt -->
+                            <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <h4 class="font-bold text-yellow-800 mb-2">Reflection Prompt</h4>
+                                <p class="text-yellow-700">In your past conversations, which of the four listening levels (Downloading, Factual, Empathic, Generative) did you use most often? How can you consciously shift toward Generative Listening in your practice?</p>
+                            </div>
+
+                            <!-- Knowledge Check -->
+                            <div class="mt-8 p-6 bg-gray-100 rounded-lg knowledge-check">
+                                <h4 class="text-lg font-bold mb-3 text-gray-800">Knowledge Check (2 Items)</h4>
+                                
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">1. The goal of Reflecting a client's statement (e.g., "It sounds like you felt betrayed by your friend") is primarily to:</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Give the client advice on friendship.</li>
+                                        <li class="font-semibold text-emerald-700">b) Show you are actively listening and confirming understanding. <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) Change the subject quickly.</li>
+                                        <li>d) Share your own similar story.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">2. When a client is experiencing a panic attack, what is the most immediate stabilizing technique a paraprofessional should teach?</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Long-term therapy goals.</li>
+                                        <li class="font-semibold text-emerald-700">b) Diaphragmatic Breathing or 5-4-3-2-1 Grounding. <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) Advanced mathematics problems.</li>
+                                        <li>d) A complex mindfulness meditation.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>` }
                 ]
             },
             {
                 moduleIndex: 5,
-                title: "Module 5: Crisis Intervention",
+                title: "Module 5: Crisis Intervention and Safe Referral",
                 lessons: [
-                    { lessonId: "M5L1", title: "Assessing Imminent Danger", content: `<div class="prose max-w-none"><p class="text-red-600 font-bold">Safety is the highest priority.</p><h3 class="font-heading text-xl mt-4 text-accent">Risk Assessment Keys (I.P.M.)</h3><ul class="list-disc ml-6"><li><strong>Intent:</strong> Do they want to die?</li><li><strong>Plan:</strong> Do they have a method?</li><li><strong>Means:</strong> Do they have access to the method?</li></ul></div>` },
-                    { lessonId: "M5L2", title: "The 'Warm Handoff' Protocol", content: `<div class="prose max-w-none"><h3 class="font-heading text-xl text-primary">Steps</h3><ol class="list-decimal ml-6"><li>Contact resource <strong>while client is present</strong>.</li><li>Summarize strictly necessary info.</li><li>Allow client to speak to provider before hanging up.</li></ol></div>` }
+                    { lessonId: "M5L1", title: "Crisis Intervention and Safe Referral", content: `
+                        <div class="prose max-w-none">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Lesson: Crisis Recognition and Immediate Safety</h3>
+                            <p class="mb-6 text-gray-700">A crisis requires immediate linkage to professional help (Level 3 Care).</p>
+
+                            <!-- Crisis Checklist Table -->
+                            <div class="overflow-x-auto rounded-lg shadow-md mb-8">
+                                <table class="min-w-full divide-y divide-gray-200 skill-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-red-600 text-white rounded-tl-lg">Crisis Indicator</th>
+                                            <th class="bg-red-600 text-white rounded-tr-lg">Action Protocol</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="font-medium text-red-700">Imminent Suicide Risk</td>
+                                            <td>Ask directly ("Are you thinking of killing yourself?"), stay with them, and remove means of harm.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium">Psychotic Symptoms</td>
+                                            <td>Symptoms like clear delusions (fixed false beliefs) or hallucinations (seeing/hearing things others do not).</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium">Acute Violence/Aggression</td>
+                                            <td>Imminent threat of harm to others.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium">Severe Substance Withdrawal/Overdose</td>
+                                            <td>Signs requiring immediate medical intervention.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Infographic: How it Feels to Have Stress and Anxiety</h4>
+                            <a href="https://cognitioplus.aiwaapp.live/cache/media_cache/22356b88daf732624d26b953fb438ad8.jpeg" target="_blank" class="inline-block px-4 py-2 bg-red-600 text-white font-medium text-sm rounded-full hover:bg-red-700 transition duration-150 mb-8">
+                                View Infographic
+                            </a>
+
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Lesson: Referral Protocols</h3>
+                            
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Safe Referrals within the Philippine System</h4>
+                            <p class="mb-3 text-gray-700">Referrals must be targeted to the appropriate level of care:</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 text-gray-700">
+                                <li><strong>Level 1 (Community/Primary Care):</strong> Refer to Barangay Health Workers (BHWs), Rural Health Units (RHUs), or LGU MHPSS desks for long-term basic counseling or psychoeducation.</li>
+                                <li><strong>Level 2 (Specialized Care):</strong> Refer to licensed Psychologists or Psychiatrists for persistent symptoms (e.g., chronic depression) or formal assessment.</li>
+                                <li class="font-semibold text-red-700"><strong>Level 3 (Tertiary/Emergency Care):</strong> Refer immediately to the National Center for Mental Health (NCMH) Crisis Hotline (1553), Hopeline PH, or a hospital Emergency Room for acute crises.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">The Seamless Care Process and Warm Handoff</h4>
+                            <p class="mb-3 text-gray-700">To ensure ethical and effective continuity of care (Beneficence), you must master the seamless care process.</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 text-gray-700">
+                                <li><strong>Seamless Care Guidebook and Infographics:</strong> These resources provide step-by-step instructions on documenting the referral, communicating the handoff to the receiving professional, and following up (Cognitio+, n.d.).</li>
+                                <li><strong>The Warm Handoff:</strong> Whenever possible, conduct a warm handoff by calling the resource (e.g., a hotline) while the client is present and briefing the intake officer to ensure a smooth transition of care. This is crucial for Beneficence.</li>
+                            </ul>
+
+                            <!-- Reference Material -->
+                            <div class="mt-8 p-4 bg-sky-50 border border-sky-200 rounded-lg">
+                                <h4 class="font-bold text-sky-800 mb-2">Reference Material (Self-Reading)</h4>
+                                <p class="text-sky-700">Cognitio+ Seamless Care Guidebook and Infographics: Review the process for documenting a crisis referral and follow-up steps.
+                                    <a href="https://cognitioplus.aiwaapp.live/seamless-care" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium ml-2">Guidebook</a> | 
+                                    <a href="https://cognitioplus.aiwaapp.live/seamless-care-infographics" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium">Infographics</a>
+                                </p>
+                            </div>
+
+                            <!-- Reflection Prompt -->
+                            <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <h4 class="font-bold text-yellow-800 mb-2">Reflection Prompt</h4>
+                                <p class="text-yellow-700">If you encounter a client with imminent suicide risk, what specific steps would you take in the next 10 minutes (Look, Listen, and Link), and what boundary would you need to breach?</p>
+                            </div>
+
+                            <!-- Knowledge Check -->
+                            <div class="mt-8 p-6 bg-gray-100 rounded-lg knowledge-check">
+                                <h4 class="text-lg font-bold mb-3 text-gray-800">Knowledge Check (3 Items)</h4>
+                                
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">1. Which contact should a paraprofessional prioritize when a client presents with a clear, imminent suicide plan?</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) The client's neighbor.</li>
+                                        <li class="font-semibold text-emerald-700">b) The NCMH Crisis Hotline (1553) or emergency services (911). <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) A local primary school teacher.</li>
+                                        <li>d) A general online forum.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">2. The purpose of a "Warm Handoff" during a referral is to:</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Make the client feel guilty for needing help.</li>
+                                        <li class="font-semibold text-emerald-700">b) Increase the likelihood of follow-through by the client and ensure continuity of care. <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) Save the paraprofessional time.</li>
+                                        <li>d) Avoid documenting the referral.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">3. A referral to a Rural Health Unit (RHU) for ongoing basic counseling falls under which level of the Philippine care system?</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Level 3 (Tertiary/Emergency)</li>
+                                        <li>b) Level 2 (Specialized)</li>
+                                        <li class="font-semibold text-emerald-700">c) Level 1 (Primary/Community) <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>d) Level 0 (Self-Care)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>` }
                 ]
             },
             {
                 moduleIndex: 6,
-                title: "Module 6: Cultural Sensitivity",
+                title: "Module 6: Cultural Sensitivity and Inclusive Practice",
                 lessons: [
-                    { lessonId: "M6L1", title: "Cultural Influences on Distress", content: `<div class="prose max-w-none"><p>Distress may be expressed somatically rather than emotionally. Respect traditional coping mechanisms.</p></div>` },
-                    { lessonId: "M6L2", title: "Non-Discrimination & LGBTQIA+", content: `<div class="prose max-w-none"><p>Inclusive practice requires recognizing and affirming identities. Use preferred names and pronouns.</p></div>` }
+                    { lessonId: "M6L1", title: "Cultural Sensitivity and Inclusive Practice", content: `
+                        <div class="prose max-w-none">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Lesson: Cultural Competence and Humility</h3>
+                            
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Cultural Humility</h4>
+                            <p class="mb-4 text-gray-700">Cultural humility is the continuous process of self-reflection and learning about a client’s cultural background without assuming expertise. It involves recognizing that your own culture shapes your support style.</p>
+
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Key Filipino Cultural Values in MHPSS</h4>
+                            <ul class="list-disc list-inside space-y-3 ml-4 text-gray-700">
+                                <li><strong>Hiya (Shame/Modesty):</strong> Often prevents individuals from admitting distress or seeking help outside the family. Your response: Emphasize the confidentiality of the service.</li>
+                                <li><strong>Pakikisama (Harmony/Group Solidarity):</strong> Pressure to maintain peace may lead individuals to suppress personal distress. Your response: Validate their feelings while gently empowering them to prioritize self-care (Autonomy).</li>
+                                <li><strong>Family-Centered Healing:</strong> The family is the primary source of support. Your response: In non-crisis situations, explore how family can be safely included in the support process.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Inclusive Practice</h4>
+                            <p class="mb-4 text-gray-700">Always adapt your language and approach to be inclusive of all groups, including:</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 text-gray-700">
+                                <li>LGBTQIA+ individuals (e.g., using preferred pronouns).</li>
+                                <li>Persons With Disabilities (PWDs).</li>
+                                <li>Indigenous Communities.</li>
+                                <li>Muslim communities.</li>
+                            </ul>
+
+                            <!-- Embedded Content -->
+                            <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <h4 class="font-bold text-blue-800 mb-2">Embedded Content</h4>
+                                <p class="text-blue-700">Slide Presentation: <a href="https://www.canva.com/design/DAG4htSUDUE/v72-JsOfYY-kObohRljxKQ/view?utm_content=DAG4htSUDUE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbf69d5a7d3" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Cultural Sensitivity Slides</a></p>
+                            </div>
+
+                            <!-- Reference Material -->
+                            <div class="mt-8 p-4 bg-sky-50 border border-sky-200 rounded-lg">
+                                <h4 class="font-bold text-sky-800 mb-2">Reference Material (Self-Reading)</h4>
+                                <p class="text-sky-700">Local Filipino MHPSS Studies: Explore articles on how Filipino family dynamics or religious beliefs impact mental health narratives and recovery.</p>
+                            </div>
+
+                            <!-- Reflection Prompt -->
+                            <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <h4 class="font-bold text-yellow-800 mb-2">Reflection Prompt</h4>
+                                <p class="text-yellow-700">How might your cultural background influence your perception of a client who expresses strong Hiya regarding their mental health? What specific action could you take to make them feel safe and respected?</p>
+                            </div>
+
+                            <!-- Knowledge Check -->
+                            <div class="mt-8 p-6 bg-gray-100 rounded-lg knowledge-check">
+                                <h4 class="text-lg font-bold mb-3 text-gray-800">Knowledge Check (2 Items)</h4>
+                                
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">1. If a client expresses concern that their mental health issue will cause Hiya (shame) to their family, the most appropriate culturally sensitive response is to:</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Tell them Hiya is outdated.</li>
+                                        <li class="font-semibold text-emerald-700">b) Reassure them that confidentiality is maintained and validate their family concern. <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) Insist they tell their family immediately.</li>
+                                        <li>d) End the session.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">2. The principle of Cultural Humility requires you to:</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Master every single culture in the Philippines.</li>
+                                        <li class="font-semibold text-emerald-700">b) Continuously engage in self-reflection and learning about other cultures without assuming expertise. <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) Treat all clients exactly the same way regardless of background.</li>
+                                        <li>d) Only work with people from your own community.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>` }
                 ]
             },
             {
                 moduleIndex: 7,
-                title: "Module 7: Self-Care",
+                title: "Module 7: Self-Care and Resilience",
                 lessons: [
-                    { lessonId: "M7L1", title: "Compassion Fatigue", content: `<div class="prose max-w-none"><p>Professional self-care is an <strong>ethical requirement</strong>.</p></div>` },
-                    { lessonId: "M7L2", title: "Personal Self-Care Plan", content: `<div class="prose max-w-none"><ul class="list-disc ml-6"><li>Establish boundaries.</li><li>Engage in supervision.</li><li>Maintain physical health.</li></ul></div>` }
+                    { lessonId: "M7L1", title: "Paraprofessional Self-Care", content: `
+                        <div class="prose max-w-none">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Lesson: Paraprofessional Self-Care</h3>
+                            
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Paraprofessional Self-Care</h4>
+                            <p class="mb-4 text-gray-700"><strong>Compassion Fatigue</strong> is the emotional and physical exhaustion experienced when repeatedly helping others in distress (Figley, 1995). It impairs your ability to provide safe and ethical support (Non-maleficence).</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4 text-gray-700">
+                                <li><strong>Self-Care Dimensions:</strong> Develop sustainable habits across the Physical, Emotional, Social, and Spiritual domains.</li>
+                                <li><strong>Supervision:</strong> Participate actively in peer supervision circles to process challenging cases, maintain boundaries, and obtain ethical guidance.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700">Cognitio+ Digital Resilience Tools</h4>
+                            <p class="mb-4 text-gray-700">Utilize these tools for ongoing self-monitoring and support:</p>
+                            
+                            <!-- Tools Table -->
+                            <div class="overflow-x-auto rounded-lg shadow-md mb-8">
+                                <table class="min-w-full divide-y divide-gray-200 skill-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="rounded-tl-lg bg-indigo-600 text-white">Tool</th>
+                                            <th class="bg-indigo-600 text-white">Purpose and Use</th>
+                                            <th class="rounded-tr-lg bg-indigo-600 text-white">Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr><td>Well-Be</td><td>Assess stress levels using heart rate variability (HRV) and other physiological indicators to understand your body’s stress response.</td><td><a href="https://cognitioplus.aiwaapp.live/well-be/" target="_blank" class="text-indigo-600 hover:text-indigo-800">Access Tool</a></td></tr>
+                                        <tr><td>Smart Emotion Tracker</td><td>Log and analyze your emotional experiences to recognize patterns and triggers over time.</td><td><a href="https://cognitioplus.aiwaapp.live/smart-emotion-tracker/" target="_blank" class="text-indigo-600 hover:text-indigo-800">Access Tool</a></td></tr>
+                                        <tr><td>Habit Design Studio</td><td>A resource for designing and sustaining positive self-care habits aligned with your personal well-being goals.</td><td><a href="https://cognitioplus.aiwaapp.live/habit-design-studio" target="_blank" class="text-indigo-600 hover:text-indigo-800">Access Tool</a></td></tr>
+                                        <tr><td>Oasis</td><td>Provides resources and guided exercises for mindfulness, grounding, and instant relaxation to promote calm.</td><td><a href="https://cognitioplus.aiwaapp.live/oasis" target="_blank" class="text-indigo-600 hover:text-indigo-800">Access Tool</a></td></tr>
+                                        <tr><td>Resilience Navigator</td><td>A tool to help you identify and strengthen your personal resources for coping with adversity and building long-term resilience.</td><td><a href="https://cognitioplus.aiwaapp.live/resilience-navigator/" target="_blank" class="text-indigo-600 hover:text-indigo-800">Access Tool</a></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Embedded Content & Infographics -->
+                            <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <h4 class="font-bold text-blue-800 mb-2">Embedded Content & Infographics</h4>
+                                <ul class="list-disc list-inside space-y-1 ml-4 text-blue-700">
+                                    <li>Video URL on Self-Care: <a href="https://youtu.be/bMh8MSV9qLU" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Watch Video</a></li>
+                                    <li>Infographic: How to Have a Good Mental Health: <a href="https://cognitioplus.aiwaapp.live/cache/media_cache/5ea1b3c335967d7e52fcdf1f794d8251.jpeg" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">View Infographic 1</a></li>
+                                    <li>Infographic: Ways to Manage Your Emotions: <a href="https://cognitioplus.aiwaapp.live/cache/media_cache/3c62c28cf537ba598de69288156ca956.jpeg" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">View Infographic 2</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Reference Material -->
+                            <div class="mt-8 p-4 bg-sky-50 border border-sky-200 rounded-lg">
+                                <h4 class="font-bold text-sky-800 mb-2">Reference Material (Self-Reading)</h4>
+                                <p class="text-sky-700">Research on Compassion Fatigue and Burnout: Read the symptoms and management strategies for secondary trauma in helping professions. (Figley, 1995)</p>
+                            </div>
+
+                            <!-- Reflection Prompt -->
+                            <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <h4 class="font-bold text-yellow-800 mb-2">Reflection Prompt</h4>
+                                <p class="text-yellow-700">What are three specific, non-negotiable activities you will commit to integrating into your weekly routine to prevent burnout? Which Cognitio+ tool will you use to track your emotional well-being?</p>
+                            </div>
+
+                            <!-- Knowledge Check -->
+                            <div class="mt-8 p-6 bg-gray-100 rounded-lg knowledge-check">
+                                <h4 class="text-lg font-bold mb-3 text-gray-800">Knowledge Check (3 Items)</h4>
+                                
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">1. The ethical principle most directly violated if a paraprofessional suffers severe burnout and begins making unsafe decisions is:</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Autonomy</li>
+                                        <li>b) Beneficence</li>
+                                        <li class="font-semibold text-emerald-700">c) Non-maleficence <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>d) Justice</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">2. Compassion Fatigue is caused by:</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Lack of technical knowledge.</li>
+                                        <li class="font-semibold text-emerald-700">b) Repeated exposure to the traumatic experiences and suffering of others. <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                        <li>c) Working only 8 hours a day.</li>
+                                        <li>d) Exercising too much.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p class="font-medium text-gray-700 mb-2">3. Which Cognitio+ tool would you use to find a quick, guided breathing exercise during a moment of high stress?</p>
+                                    <ul class="list-none space-y-1 ml-4 text-gray-600">
+                                        <li>a) Habit Design Studio</li>
+                                        <li>b) Smart Emotion Tracker</li>
+                                        <li>c) Well-Be</li>
+                                        <li class="font-semibold text-emerald-700">d) Oasis <i class="fas fa-check-circle text-emerald-600 ml-1"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>` }
                 ]
             },
             {
@@ -246,6 +617,7 @@
                 ]
             }
         ];
+
         // --- PWA Generation ---
         function generatePWA() {
             // Create Manifest
@@ -272,6 +644,7 @@
             }
         }
         generatePWA();
+
         // --- UI Rendering Functions ---
         window.switchMode = (mode) => {
             activeMode = mode;
@@ -535,9 +908,6 @@
             const text = document.getElementById(`reply-${docId}`).value;
             if(!text.trim()) return;
             // Note: In a real app, use arrayUnion. Here we simplify for the single-file constraint/demo logic
-            // Since we can't easily do partial updates on array objects without knowing the exact structure or using arrayUnion with complex objects
-            // We will just do a optimistic UI update or simple alert here as the full logic is complex for one file.
-            // *Implementation of simple Firestore update*
             try {
                const r = reflections.find(x => x.id === docId);
                const newReply = { 
