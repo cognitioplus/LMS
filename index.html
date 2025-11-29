@@ -22,15 +22,16 @@
                         success: '#D4AF37',
                         surface: '#ffffff',
                         background: '#f7f7f7',
-                        'primary-blue': '#2563eb',
-                        'light-blue': '#dbeafe',
-                        'accent-green': '#10b981',
-                        'warning-red': '#ef4444'
+                        'primary-blue': '#1D4ED8',
+                        'light-blue': '#E0F2F1',
+                        'accent-green': '#059669',
+                        'warning-red': '#DC2626'
                     },
                     fontFamily: {
                         sans: ['Roboto Condensed', 'sans-serif'],
                         heading: ['Poppins', 'sans-serif'],
-                        brand: ['Montserrat', 'sans-serif']
+                        brand: ['Montserrat', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
                     }
                 }
             }
@@ -45,7 +46,7 @@
         body {
             background-color: var(--background);
             overflow-x: hidden;
-            font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
@@ -74,35 +75,12 @@
             width: auto;
             object-fit: contain;
         }
-        /* New Styles for Modules */
-        .skill-table thead th {
-            background-color: #f3f4f6;
-            font-weight: 600;
-            text-align: left;
-            padding: 0.75rem 1rem;
+        /* Module Content Styles */
+        .module-content {
+            display: none;
         }
-        .skill-table tbody td {
-            padding: 0.75rem 1rem;
-            vertical-align: top;
-        }
-        .skill-table a {
-            text-decoration: underline;
-        }
-        .knowledge-check ul {
-            margin-top: 0.25rem;
-        }
-        .knowledge-check li {
-            padding: 0.25rem 0;
-        }
-        .module-header:focus {
-            outline: none;
-        }
-        .accordion-content {
-            padding: 0 1.5rem 1.5rem 1.5rem;
-            background-color: #fff;
-        }
-        .arrow {
-            transition: transform 0.2s ease;
+        .active-module {
+            display: block;
         }
     </style>
 </head>
@@ -194,33 +172,611 @@
                 moduleIndex: 0,
                 title: "Module 0: Orientation and Course Structure",
                 lessons: [
-                    { lessonId: "M0L1", title: "Course Goals, Purpose, and Philosophy (PFA)", content: `<div class="prose max-w-none"><p class="mb-4">The core purpose is to equip you with the essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support, both online and in community contexts.</p><div class="bg-purple-50 p-4 border-l-4 border-purple-600 rounded mb-4"><p class="font-heading font-bold text-lg text-primary">Your primary goal is not to diagnose, fix, or advise—but to LISTEN, HOLD SPACE, and CONNECT others to help.</p></div><h3 class="font-heading text-xl mt-6 mb-3 text-accent">The PFA Model: Psychological First Aid</h3><p class="mb-4">The entire course is built upon the practical, universal principles of Psychological First Aid (PFA). </p><ul class="list-disc ml-6 space-y-2"><li><strong>LOOK 👀:</strong> Assess safety, basic needs, and distress cues.</li><li><strong>LISTEN 👂:</strong> Offer non-intrusive, compassionate listening.</li><li><strong>LINK 🔗:</strong> Connect people to resources, information, and social support.</li></ul></div>` },
-                    { lessonId: "M0L2", title: "Meet the Training Team and Structure Overview", content: `<div class="prose max-w-none"><p class="mb-4">Welcome from the Cognitio+ Training Team! This course is designed to be completed across nine sequential modules.</p><h3 class="font-heading text-xl mt-6 mb-3 text-primary">Key Course Components</h3><ul class="list-disc ml-6 space-y-2"><li>Video Lectures (Simulated)</li><li>Reading Assignments (Contained within lessons)</li><li>Quizzes (For knowledge check)</li><li>Final Comprehensive Assessment (Certification)</li></ul></div>` }
+                    { lessonId: "M0L1", title: "Course Goals, Purpose, and Philosophy (PFA)", content: `
+                        <div class="prose max-w-none">
+                            <div class="mb-6 border-l-4 border-accent-green pl-4">
+                                <h4 class="text-xl font-semibold text-gray-700">0.1 Course Goal and Philosophy</h4>
+                                <p class="mt-2 text-gray-600 font-medium">Course Goal</p>
+                                <p class="text-gray-500">The central goal of this course is to equip you with the essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support in various Philippine contexts.</p>
+                                <p class="mt-2 text-gray-600 font-medium">Course Philosophy</p>
+                                <p class="text-gray-500">The course philosophy applies <strong>Psychological First Aid (PFA)</strong> principles—<span class="font-semibold text-primary-blue">Look, Listen, Link</span>—to build foundational competencies in immediate support, communication, and safe referral.</p>
+                            </div>
+                            <!-- 0.2 Guiding Frameworks -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">0.2 Guiding Frameworks</h4>
+                            <ul class="list-disc ml-6 text-gray-600 space-y-2 mt-2">
+                                <li><strong>WHO Mental Health Gap Action Programme (mhGAP):</strong> A strategy to scale up services for mental, neurological, and substance use disorders (WHO, 2023). You, as a paraprofessional, are key to addressing the service gap.</li>
+                                <li><strong>WHO QualityRights Initiative:</strong> Promotes dignity, recovery, and human rights in all mental health service delivery (WHO, 2022).</li>
+                                <li><strong>Philippine Council for Mental Health (PCMH) Strategic Framework 2024–2028:</strong> Guides the national mental health agenda, specifically addressing Workforce Development and Cross-Sectoral Collaboration.</li>
+                            </ul>
+                            <!-- 0.3 Videos and Slides -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">0.3 Videos and Slides</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><a href="https://youtu.be/7feUjsAv5is" target="_blank" class="text-primary-blue hover:underline">Introduction: Certification Course for Mental Health and Well-Being Paraprofessional</a></li>
+                                <li><a href="https://www.google.com/search?q=https://youtu.be/PtN2YMd1UY" target="_blank" class="text-primary-blue hover:underline">Message from Cognitio+'s Chief Training' Officer on the Paraprofessional Course</a></li>
+                                <li><a href="https://www.canva.com/design/DAG4fnBymhQ/g3wtSGZXCES-feVrNOoE8w/view?utm_content=DAG4fnBymhQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7097b49c0e" target="_blank" class="text-primary-blue hover:underline">Module 0 Slide Presentation</a></li>
+                            </ul>
+                            <!-- 0.4 Certification Structure -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">0.4 Certification Structure</h4>
+                            <div class="overflow-x-auto mt-2">
+                                <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+                                    <thead class="bg-light-blue">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Component</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Description</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Duration</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Assessment</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Part 1 – Foundational Training</td>
+                                            <td class="px-6 py-4 text-gray-500">Online modules introducing ethics, skills, and principles.</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">24 hours</td>
+                                            <td class="px-6 py-4 text-gray-500">Knowledge Quizzes, Reflection Exercises</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Part 2 – Practicum</td>
+                                            <td class="px-6 py-4 text-gray-500">10 guided online or community support sessions under mentor supervision.</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">10 hours</td>
+                                            <td class="px-6 py-4 text-gray-500">Observation Checklist, Supervisor Evaluation</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 0.5 Assessment -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">0.5 Assessment Weight</h4>
+                            <div class="overflow-x-auto mt-2 max-w-sm">
+                                <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+                                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                                        <tr class="bg-light-blue/50">
+                                            <td class="px-6 py-3 font-semibold text-gray-700">Type</td>
+                                            <td class="px-6 py-3 font-semibold text-gray-700">Weight</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-2 text-gray-500">Knowledge Quizzes (Modules 0-8)</td>
+                                            <td class="px-6 py-2 text-gray-500">20%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-2 text-gray-500">Skills (Role-plays, simulations)</td>
+                                            <td class="px-6 py-2 text-gray-500">30%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-2 text-gray-500">Practicum (Mentor Evaluation)</td>
+                                            <td class="px-6 py-2 text-gray-500">35%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-2 text-gray-500">Reflection (Journal and peer discussion)</td>
+                                            <td class="px-6 py-2 text-gray-500">15%</td>
+                                        </tr>
+                                        <tr class="bg-accent-green/10 font-bold text-accent-green">
+                                            <td class="px-6 py-2">Overall Passing Grade</td>
+                                            <td class="px-6 py-2">75%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 0.6 Reference Material (Self-Reading) -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">0.6 Reference Material (Self-Reading)</h4>
+                            <ul class="list-disc ml-6 text-gray-600 space-y-1 mt-2">
+                                <li><a href="https://iris.who.int/server/api/core/bitstreams/e7e129fb-b306-496d-84a5-67bb70abc130/content" target="_blank" class="text-primary-blue hover:underline">WHO PFA Guide for Field Workers (Introduction)</a>: Focus on pages 1-10 for the core PFA philosophy. (WHO, 2011)</li>
+                                <li><a href="https://cognitioplus.aiwaapp.live/guidebook" target="_blank" class="text-primary-blue hover:underline">Comprehensive Guidebook for Mental Health and Well-Being Paraprofessional</a></li>
+                            </ul>
+                            <!-- 0.7 Reflection Prompt -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">0.7 Reflection Prompt</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
+                                <p class="text-gray-700 italic">What is your primary motivation for becoming a certified mental health paraprofessional, and what is the biggest challenge you anticipate facing in this role?</p>
+                            </div>
+                            <!-- 0.8 Pre-Test -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6 pt-4 border-t border-gray-200">0.8 Pre-Test (15 Items)</h4>
+                            <p class="text-gray-500 mb-4">Instructions: Select the best answer for each question. Use the "Submit Test" button at the end to check your score.</p>
+                            <form id="preTestForm" class="space-y-6">
+                                <!-- Q1 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">1. What is the primary goal of Psychological First Aid (PFA)?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q1" value="a" class="mr-2">a) To diagnose mental health conditions quickly.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q1" value="b" class="mr-2">b) To provide non-intrusive, supportive, and practical help to people in crisis.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q1" value="c" class="mr-2">c) To offer long-term cognitive behavioral therapy.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q1" value="d" class="mr-2">d) To force distressed individuals to talk about their trauma.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q2 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">2. Which Philippine law mandates the integration of mental health services into the basic health care system?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q2" value="a" class="mr-2">a) RA 10173 (Data Privacy Act)</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q2" value="b" class="mr-2">b) RA 11036 (Mental Health Act)</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q2" value="c" class="mr-2">c) RA 9165 (Comprehensive Dangerous Drugs Act)</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q2" value="d" class="mr-2">d) RA 7160 (Local Government Code)</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q3 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">3. The PFA principle of "Look" primarily involves:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q3" value="a" class="mr-2">a) Looking for a psychologist.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q3" value="b" class="mr-2">b) Identifying immediate safety concerns and urgent basic needs.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q3" value="c" class="mr-2">c) Looking through the person's personal notes.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q3" value="d" class="mr-2">d) Looking up the person's social media history.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q4 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">4. Which ethical principle requires you to act in the client's best interest ("doing good")?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q4" value="a" class="mr-2">a) Autonomy</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q4" value="b" class="mr-2">b) Justice</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q4" value="c" class="mr-2">c) Beneficence</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q4" value="d" class="mr-2">d) Non-maleficence</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q5 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">5. As a paraprofessional, which action is strictly outside your scope of practice?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q5" value="a" class="mr-2">a) Teaching breathing exercises.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q5" value="b" class="mr-2">b) Making a professional referral.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q5" value="c" class="mr-2">c) Diagnosing Bipolar Disorder.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q5" value="d" class="mr-2">d) Listening empathetically.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q6 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">6. The ethical principle of Autonomy means respecting the client's right to:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q6" value="a" class="mr-2">a) Pay you for services.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q6" value="b" class="mr-2">b) Make their own choices, including refusing help.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q6" value="c" class="mr-2">c) Share your personal life details.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q6" value="d" class="mr-2">d) Get immediate, non-stop support.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q7 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">7. The Data Privacy Act (RA 10173) governs the handling of Sensitive Personal Information (SPI). Which is an example of SPI?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q7" value="a" class="mr-2">a) A client's favorite color.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q7" value="b" class="mr-2">b) A client's mental health disclosures.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q7" value="c" class="mr-2">c) A client's first name.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q7" value="d" class="mr-2">d) A client's preferred time of day.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q8 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">8. The PFA action "Link" refers to:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q8" value="a" class="mr-2">a) Linking the client's past to their present problem.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q8" value="b" class="mr-2">b) Connecting the client to social support and professional resources.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q8" value="c" class="mr-2">c) Linking the cause of the crisis to the outcome.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q8" value="d" class="mr-2">d) Linking your personal experience to theirs.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q9 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">9. What is the primary goal of the WHO Mental Health Gap Action Programme (mhGAP)?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q9" value="a" class="mr-2">a) To fund new hospitals globally.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q9" value="b" class="mr-2">b) To reduce the treatment gap for mental health disorders.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q9" value="c" class="mr-2">c) To train psychiatrists only.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q9" value="d" class="mr-2">d) To abolish all mental health stigma.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q10 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">10. If a client is experiencing intense emotional distress, the PFA action you should prioritize is:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q10" value="a" class="mr-2">a) Look (Check for safety).</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q10" value="b" class="mr-2">b) Listen (Promote calmness).</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q10" value="c" class="mr-2">c) Link (Make a referral).</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q10" value="d" class="mr-2">d) Force (Encourage them to talk).</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q11 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">11. Professional boundaries are primarily established to protect:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q11" value="a" class="mr-2">a) Only the paraprofessional's schedule.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q11" value="b" class="mr-2">b) Only the client's reputation.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q11" value="c" class="mr-2">c) Both the client and the paraprofessional from harm or exploitation.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q11" value="d" class="mr-2">d) Only the client's family.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q12 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">12. Why is using non-judgmental language essential in PFA?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q12" value="a" class="mr-2">a) To avoid being rude.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q12" value="b" class="mr-2">b) To promote connectedness and trust.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q12" value="c" class="mr-2">c) To speed up the conversation.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q12" value="d" class="mr-2">d) To help you diagnose the problem faster.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q13 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">13. Which concept relates to the ethical principle of Justice?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q13" value="a" class="mr-2">a) Only serving clients with medical insurance.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q13" value="b" class="mr-2">b) Serving all individuals equally regardless of their background.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q13" value="c" class="mr-2">c) Giving personal advice only to those who ask nicely.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q13" value="d" class="mr-2">d) Keeping every secret the client tells you.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q14 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">14. What is the deepest level of listening, according to Otto Scharmer's model, where you listen with an open will to co-create a future possibility?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q14" value="a" class="mr-2">a) Factual Listening</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q14" value="b" class="mr-2">b) Downloading</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q14" value="c" class="mr-2">c) Empathic Listening</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q14" value="d" class="mr-2">d) Generative Listening</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- Q15 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">15. If a client tells you they are refusing to seek professional help, what action should you take based on the principle of Autonomy?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q15" value="a" class="mr-2">a) Gently pressure them to change their mind.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q15" value="b" class="mr-2">b) Respect their decision while ensuring they know what support is available.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q15" value="c" class="mr-2">c) Immediately end the support session.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="q15" value="d" class="mr-2">d) Call their family to intervene without their consent.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="submitAssessment('preTestForm', preTestAnswers)" class="w-full sm:w-auto px-6 py-3 bg-accent-green text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                                    Submit Pre-Test
+                                </button>
+                                <p id="preTestResult" class="mt-4 text-lg font-bold"></p>
+                            </form>
+                        </div>` }
                 ]
             },
             {
                 moduleIndex: 1,
                 title: "Module 1: Foundational Frameworks and Your Role",
                 lessons: [
-                    { lessonId: "M1L1", title: "Guiding National and International Frameworks", content: `<div class="prose max-w-none"><p class="mb-4">Your role is anchored in global and local standards to ensure quality, ethical practice.</p><h3 class="font-heading text-xl mt-6 mb-3 text-primary">WHO mhGAP</h3><p class="mb-4">A strategy to scale up services for mental, neurological, and substance use disorders. You are key to addressing the service gap.</p><h3 class="font-heading text-xl mt-6 mb-3 text-primary">WHO QualityRights</h3><p class="mb-4">Promotes **Dignity, Recovery, and Human Rights** in all mental health service delivery.</p></div>` },
-                    { lessonId: "M1L2", title: "Defining the Paraprofessional's Scope", content: `<div class="prose max-w-none"><p class="mb-4">It is critical to understand the distinction between peer support and clinical intervention. You are a **non-clinical** provider.</p><h3 class="font-heading text-xl mt-6 mb-3 text-accent">Professional Boundaries</h3><ul class="list-disc ml-6 space-y-2"><li><strong>Do NOT:</strong> Diagnose, prescribe, or offer long-term therapy.</li><li><strong>DO:</strong> Provide immediate comfort, assess immediate safety (LOOK), and facilitate referral (LINK).</li></ul></div>` }
+                    { lessonId: "M1L1", title: "Foundational Frameworks and Your Role", content: `
+                        <div class="prose max-w-none">
+                            <!-- 1.1 The Philippine Mental Health Context -->
+                            <h4 class="text-xl font-semibold text-gray-700 mb-2">1.1 The Philippine Mental Health Context</h4>
+                            <p class="text-gray-600">The <strong>Mental Health Act (Republic Act No. 11036)</strong> establishes the right of every Filipino to integrated, accessible, and rights-based mental health care. This law mandates the integration of mental health services into the basic health care system (Official Gazette, 2018).</p>
+                            <ul class="list-disc ml-6 text-gray-600 mt-2">
+                                <li><strong>PCMH Mandate:</strong> The PCMH is responsible for overseeing the law's implementation, making your role essential to extending its reach into the community.</li>
+                            </ul>
+                            <!-- 1.2 Slide Presentation -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">1.2 Slide Presentation</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><a href="https://www.canva.com/design/DAG4fnVLh98/CVt0kP-Grox9BbCo3BKwdA/view?utm_content=DAG4fnVLh98&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3b38d2382f" target="_blank" class="text-primary-blue hover:underline">Module 1 Slide Presentation</a></li>
+                            </ul>
+                            <!-- 1.3 The Goal and Roles of a Paraprofessional -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">1.3 The Goal and Roles of a Paraprofessional</h4>
+                            <p class="text-gray-600 mb-2">As a paraprofessional, your role is non-clinical. You are not a licensed psychiatrist, psychologist, or counselor.</p>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+                                    <thead class="bg-light-blue">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Core Role</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Action Statement</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Professional Boundary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Support</td>
+                                            <td class="px-6 py-4 text-gray-500">Provide immediate, compassionate, and non-intrusive psychosocial support.</td>
+                                            <td class="px-6 py-4 text-warning-red font-medium">DO NOT diagnose, prescribe medication, or offer psychotherapy.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Normalize</td>
+                                            <td class="px-6 py-4 text-gray-500">Use person-first language and psychoeducation to combat mental health stigma.</td>
+                                            <td class="px-6 py-4 text-warning-red font-medium">DO NOT use judgmental language or minimize distress.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Link</td>
+                                            <td class="px-6 py-4 text-gray-500">Connect individuals to professional, licensed services when needed.</td>
+                                            <td class="px-6 py-4 text-warning-red font-medium">DO NOT take on long-term case management for severe cases.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 1.4 Video -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">1.4 Video</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><a href="https://youtu.be/aHAuxdBfDzA" target="_blank" class="text-primary-blue hover:underline">Bridging the Gap: The Role and Goals of Mental Health and Well-Being Paraprofessional</a></li>
+                            </ul>
+                            <!-- 1.5 Understanding Stigma -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">1.5 Understanding Stigma</h4>
+                            <p class="text-gray-600">Mental Health Stigma (prejudice and discrimination) is a primary barrier to help-seeking in the Philippines. Your practice must actively counter this by normalizing distress, respecting confidentiality, and upholding the rights-based approach.</p>
+                            <!-- 1.6 Reference Material (Self-Reading) -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">1.6 Reference Material (Self-Reading)</h4>
+                            <ul class="list-disc ml-6 text-gray-600 space-y-1 mt-2">
+                                <li><strong>Full Text of RA 11036 (Mental Health Act):</strong> Focus on Section 4 (Rights of Users) and Section 14 (Mental Health Services in the Community). (Official Gazette, 2018).</li>
+                            </ul>
+                            <!-- 1.7 Reflection Prompt -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">1.7 Reflection Prompt</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
+                                <p class="text-gray-700 italic">Before this course, what was one common myth or stigma about mental health you believed? How does the existence of the Mental Health Act change your perspective on your role?</p>
+                            </div>
+                            <!-- 1.8 Knowledge Check -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6 pt-4 border-t border-gray-200">1.8 Knowledge Check (3 Items)</h4>
+                            <p class="text-gray-500 mb-4">Complete the check to solidify your understanding of Module 1.</p>
+                            <form id="kc1Form" class="space-y-6">
+                                <!-- KC1 Q1 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">1. Which statement accurately defines the paraprofessional scope of practice?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q1" value="a" class="mr-2">a) They are authorized to make clinical diagnoses.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q1" value="b" class="mr-2">b) They focus on immediate psychosocial support and safe referral.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q1" value="c" class="mr-2">c) They can manage a client's medication schedule.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q1" value="d" class="mr-2">d) They conduct formal, long-term counseling sessions.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- KC1 Q2 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">2. The primary reason for using "person-first language" (e.g., "person with depression" instead of "a depressive") is to:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q2" value="a" class="mr-2">a) Sound more formal.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q2" value="b" class="mr-2">b) Fight stigma by separating the person from the condition.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q2" value="c" class="mr-2">c) Follow RA 10173 guidelines.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q2" value="d" class="mr-2">d) Make the conversation longer.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- KC1 Q3 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">3. The WHO's guidance on cross-sectoral collaboration primarily aims to:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q3" value="a" class="mr-2">a) Confine mental health support to hospitals.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q3" value="b" class="mr-2">b) Ensure mental health promotion is integrated across all government sectors (e.g., education, labor).</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q3" value="c" class="mr-2">c) Limit the number of people who can seek help.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc1q3" value="d" class="mr-2">d) Transfer all funding to private practitioners.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="submitAssessment('kc1Form', kc1Answers)" class="w-full sm:w-auto px-6 py-3 bg-accent-green text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                                    Submit Knowledge Check 1
+                                </button>
+                                <p id="kc1Result" class="mt-4 text-lg font-bold"></p>
+                            </form>
+                        </div>` }
                 ]
             },
             {
                 moduleIndex: 2,
                 title: "Module 2: Ethical, Legal, and Digital Practice",
                 lessons: [
-                    { lessonId: "M2L1", title: "Confidentiality and Mandatory Reporting", content: `<div class="prose max-w-none"><p class="mb-4">The Ethical Imperative: All client information must be protected. You must maintain professional silence about all cases unless mandated by law.</p><h3 class="font-heading text-xl mt-6 mb-3 text-primary">Key Legal Documents</h3><ul class="list-disc ml-6 space-y-2"><li><strong>Republic Act No. 10173 (Data Privacy Act):</strong> Strictly governs the handling of sensitive personal information.</li><li><strong>Republic Act No. 11036 (Mental Health Act):</strong> Upholds the rights of persons with mental health conditions.</li></ul></div>` },
-                    { lessonId: "M2L2", title: "Digital Ethics and Online Support", content: `<div class="prose max-w-none"><p class="mb-4">Supporting clients online requires heightened caution regarding security, privacy, and informed consent.</p><div class="bg-red-50 p-4 border-l-4 border-red-500 rounded"><p class="font-bold">Avoid dual relationships (e.g., becoming friends with clients on social media).</p></div></div>` }
+                    { lessonId: "M2L1", title: "Ethical, Legal, and Digital Practice", content: `
+                        <div class="prose max-w-none">
+                            <!-- 2.1 Slide Presentation -->
+                            <h4 class="text-xl font-semibold text-gray-700 mb-2">2.1 Slide Presentation</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><a href="https://www.canva.com/design/DAG4fzYXTSE/DnwXtDcHeA8rR3Gg3DNrnA/view?utm_content=DAG4fzYXTSE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h12b88ba2e5" target="_blank" class="text-primary-blue hover:underline">Module 2 Slide Presentation</a></li>
+                            </ul>
+                            <!-- 2.2 Core Ethical Principles -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">2.2 Core Ethical Principles</h4>
+                            <p class="text-gray-600 mb-4">These principles are the moral foundation of your work:</p>
+                            <ul class="list-disc ml-6 text-gray-600 space-y-2">
+                                <li><strong>Autonomy:</strong> Respect the service user's freedom of choice and self-determination.</li>
+                                <li><strong>Beneficence:</strong> Commit to acting in the best interest of the client ("doing good").</li>
+                                <li><strong>Non-maleficence:</strong> Commit to avoiding harm ("do no harm") by staying strictly within your scope of practice.</li>
+                                <li><strong>Justice:</strong> Ensure fairness and equal access to support, irrespective of background.</li>
+                            </ul>
+                            <!-- 2.3 The Data Privacy Act (RA 10173) and Digital Confidentiality -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">2.3 The Data Privacy Act (RA 10173) and Digital Confidentiality</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><strong>Video: Know Your Data Privacy Rights:</strong> <a href="https://youtu.be/Kz-INokaRFs" target="_blank" class="text-primary-blue hover:underline">https://youtu.be/Kz-INokaRFs</a></li>
+                            </ul>
+                            <p class="text-gray-600 mt-2">The <strong>Data Privacy Act of 2012 (RA 10173)</strong> strictly regulates the collection, processing, and storage of personal information, especially Sensitive Personal Information (SPI), which includes all mental health disclosures (Official Gazette, 2012).</p>
+                            <div class="overflow-x-auto mt-4">
+                                <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+                                    <thead class="bg-light-blue">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Application of RA 10173</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Mandatory Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Digital Conversations</td>
+                                            <td class="px-6 py-4 text-gray-500">Use end-to-end encrypted platforms (e.g., Signal). Never use personal social media (e.g., Facebook Messenger, personal email) for formal support.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Data Storage</td>
+                                            <td class="px-6 py-4 text-gray-500">Store all documentation (e.g., case logs, notes) in a password-protected or encrypted system.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Informed Consent</td>
+                                            <td class="px-6 py-4 text-gray-500">Explicitly inform the client how their data will be collected, used, and protected before the support session begins.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 2.4 Informed Consent and Professional Boundaries -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">2.4 Informed Consent and Professional Boundaries</h4>
+                            <ul class="list-disc ml-6 text-gray-600 space-y-2">
+                                <li><strong>Informed Consent:</strong> Must be <strong>Voluntary, Informed, and Specific (VIS)</strong>. The client must understand the limits of your role and the limits of confidentiality.</li>
+                                <li><strong>Limits of Confidentiality (Duty to Warn):</strong> You must breach confidentiality when there is an imminent, credible risk of serious harm to the client or others, or mandated by law.</li>
+                                <li><strong>Boundary Violations:</strong> Avoid dual relationships (e.g., friend and paraprofessional), accepting large gifts, or excessive self-disclosure. Boundary maintenance is crucial for safety and non-maleficence.</li>
+                            </ul>
+                            <!-- 2.5 Reflection Prompt -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">2.5 Reflection Prompt</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
+                                <p class="text-gray-700 italic">Describe an ethical dilemma where two principles conflict (e.g., Autonomy vs. Beneficence). How would you use your scope as a paraprofessional to resolve it safely?</p>
+                            </div>
+                            <!-- 2.6 Knowledge Check -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6 pt-4 border-t border-gray-200">2.6 Knowledge Check (3 Items)</h4>
+                            <p class="text-gray-500 mb-4">Complete the check to solidify your understanding of Module 2.</p>
+                            <form id="kc2Form" class="space-y-6">
+                                <!-- KC2 Q1 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">1. A paraprofessional's primary duty under the principle of Non-maleficence is to:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q1" value="a" class="mr-2">a) Always tell the client what they want to hear.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q1" value="b" class="mr-2">b) Avoid any action or intervention that could cause harm.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q1" value="c" class="mr-2">c) Only work with non-verbal communication.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q1" value="d" class="mr-2">d) Demand detailed information about the client's past.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- KC2 Q2 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">2. Under RA 10173, what is the safest practice for storing confidential client notes?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q2" value="a" class="mr-2">a) Keeping them on a public cloud drive for easy access.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q2" value="b" class="mr-2">b) Storing them in a file on your personal desktop with no password.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q2" value="c" class="mr-2">c) Using a secure, encrypted, and password-protected system.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q2" value="d" class="mr-2">d) Writing them on a sticky note and keeping it in your wallet.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- KC2 Q3 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">3. Which situation requires a paraprofessional to breach confidentiality (Duty to Warn)?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q3" value="a" class="mr-2">a) The client misses an appointment.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q3" value="b" class="mr-2">b) The client tells you they are actively planning to harm themselves or another person.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q3" value="c" class="mr-2">c) The client is sad and stressed.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc2q3" value="d" class="mr-2">d) The client asks for a referral.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="submitAssessment('kc2Form', kc2Answers)" class="w-full sm:w-auto px-6 py-3 bg-accent-green text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                                    Submit Knowledge Check 2
+                                </button>
+                                <p id="kc2Result" class="mt-4 text-lg font-bold"></p>
+                            </form>
+                        </div>` }
                 ]
             },
             {
                 moduleIndex: 3,
                 title: "Module 3: Psychological First Aid (PFA) and Scope",
                 lessons: [
-                    { lessonId: "M3L1", title: "PFA Step 1: LOOK 👀", content: `<div class="prose max-w-none"><p class="mb-4">The 'LOOK' stage involves observing, assessing, and identifying who needs help.</p><h3 class="font-heading text-xl mt-6 mb-3 text-primary">Key Observation Areas</h3><ul class="list-disc ml-6 space-y-2"><li>Immediate safety risks (environment, self-harm, others).</li><li>Signs of severe distress.</li><li>Basic needs (food, water, medical).</li></ul></div>` },
-                    { lessonId: "M3L2", title: "PFA Step 2: LISTEN 👂", content: `<div class="prose max-w-none"><p class="mb-4">Listening is not waiting for your turn to speak; it is fully receiving the other person's reality.</p><h3 class="font-heading text-xl mt-6 mb-3 text-accent">Compassionate Presence</h3><p>Be physically available, silent when necessary, and use non-verbal cues.</p></div>` },
-                    { lessonId: "M3L3", title: "PFA Step 3: LINK 🔗", content: `<div class="prose max-w-none"><p class="mb-4">Linking is the final PFA action—connecting the person to the next appropriate level of care.</p><h3 class="font-heading text-xl mt-6 mb-3 text-primary">Resource Mapping</h3><p>Know your local and national resources for efficient referrals.</p></div>` }
+                    { lessonId: "M3L1", title: "Psychological First Aid (PFA) and Scope", content: `
+                        <div class="prose max-w-none">
+                            <!-- 3.1 Slide Presentation -->
+                            <h4 class="text-xl font-semibold text-gray-700 mb-2">3.1 Slide Presentation</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><a href="https://www.canva.com/design/DAG4fzboQ34/ME67xdgJdgksumYOCIPszw/view?utm_content=DAG4fzboQ34&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h585c83478d" target="_blank" class="text-primary-blue hover:underline">Module 3 Slide Presentation</a></li>
+                            </ul>
+                            <!-- 3.2 PFA: Five Core Principles -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">3.2 PFA: Five Core Principles</h4>
+                            <p class="text-gray-600 mb-2">PFA is a human, supportive, and practical response to serious stress, promoting immediate well-being and preventing long-term harm (WHO, 2011).</p>
+                            <ul class="list-decimal ml-6 text-gray-600 space-y-1">
+                                <li><strong>Promote Safety:</strong> Ensure the environment is safe.</li>
+                                <li><strong>Promote Calmness:</strong> Help stabilize the individual's emotional state.</li>
+                                <li><strong>Promote Connectedness:</strong> Facilitate access to social support and services.</li>
+                                <li><strong>Promote Self-Efficacy:</strong> Empower the person to take charge of their own recovery.</li>
+                                <li><strong>Promote Hope:</strong> Maintain a realistic, positive outlook on recovery.</li>
+                            </ul>
+                            <!-- 3.3 Video -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">3.3 Video</h4>
+                            <ul class="list-inside text-gray-600 space-y-1 mt-2">
+                                <li><strong>Basics of PFA:</strong> <a href="https://youtu.be/sGooy-cS9G4" target="_blank" class="text-primary-blue hover:underline">https://youtu.be/sGooy-cS9G4</a></li>
+                            </ul>
+                            <!-- 3.4 Applying the PFA Action Model -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">3.4 Applying the PFA Action Model</h4>
+                            <div class="overflow-x-auto mt-4">
+                                <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+                                    <thead class="bg-light-blue">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">PFA Action</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Focus</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-primary-blue uppercase tracking-wider">Paraprofessional Goal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">LOOK 👀</td>
+                                            <td class="px-6 py-4 text-gray-500">Observation and Assessment of Needs</td>
+                                            <td class="px-6 py-4 text-gray-500">Identify urgent basic needs (water, shelter, medical) and immediate safety concerns (signs of severe distress or danger).</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">LISTEN 👂</td>
+                                            <td class="px-6 py-4 text-gray-500">Engagement and Active Listening</td>
+                                            <td class="px-6 py-4 text-gray-500">Establish rapport, accept the person's story without pressure, and validate their feelings.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">LINK 🔗</td>
+                                            <td class="px-6 py-4 text-gray-500">Connecting to Resources</td>
+                                            <td class="px-6 py-4 text-gray-500">Provide practical help, connect them to social supports, and facilitate referral to appropriate professional services.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 3.5 PFA is NOT -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">3.5 PFA is NOT</h4>
+                            <ul class="list-disc ml-6 text-warning-red space-y-1 font-medium">
+                                <li><strong>Not Professional Counseling:</strong> It is immediate, temporary, and non-clinical.</li>
+                                <li><strong>Not Forced Debriefing:</strong> Never pressure a person to tell their story.</li>
+                                <li><strong>Not Diagnosis:</strong> Never label the person with a mental health condition.</li>
+                            </ul>
+                            <!-- 3.6 Reference Material (Self-Reading) -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">3.6 Reference Material (Self-Reading)</h4>
+                            <ul class="list-disc ml-6 text-gray-600 space-y-1 mt-2">
+                                <li><strong>WHO PFA: Practical Checklist:</strong> Review the step-by-step checklist for PFA implementation. (WHO, 2011)</li>
+                            </ul>
+                            <!-- 3.7 Reflection Prompt -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6">3.7 Reflection Prompt</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
+                                <p class="text-gray-700 italic">Describe a scenario where you would need to stop listening to focus on LOOKING (e.g., prioritizing safety). How would you transition in a compassionate way?</p>
+                            </div>
+                            <!-- 3.8 Knowledge Check -->
+                            <h4 class="text-xl font-semibold text-gray-700 mt-6 pt-4 border-t border-gray-200">3.8 Knowledge Check (3 Items)</h4>
+                            <p class="text-gray-500 mb-4">Complete the check to solidify your understanding of Module 3.</p>
+                            <form id="kc3Form" class="space-y-6">
+                                <!-- KC3 Q1 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">1. Which PFA principle is most directly applied when a paraprofessional teaches a client a grounding exercise?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q1" value="a" class="mr-2">a) Promote Safety</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q1" value="b" class="mr-2">b) Promote Calmness</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q1" value="c" class="mr-2">c) Promote Justice</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q1" value="d" class="mr-2">d) Promote Hope</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- KC3 Q2 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">2. During the LOOK phase, what is the most important type of risk to assess?</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q2" value="a" class="mr-2">a) Financial risk</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q2" value="b" class="mr-2">b) Imminent risk of self-harm or harm to others.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q2" value="c" class="mr-2">c) Risk of job loss</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q2" value="d" class="mr-2">d) Risk of embarrassment</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <!-- KC3 Q3 -->
+                                <div class="p-4 bg-light-blue/20 rounded-lg shadow-sm">
+                                    <p class="font-medium text-gray-800 mb-2">3. The action of "Promote Self-Efficacy" means:</p>
+                                    <div class="space-y-1 text-sm">
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q3" value="a" class="mr-2">a) Solving the client's problem for them.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q3" value="b" class="mr-2">b) Reminding the client of their inherent strengths and ability to cope.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q3" value="c" class="mr-2">c) Giving the client money.</label>
+                                        <label class="flex items-center text-gray-600"><input type="radio" name="kc3q3" value="d" class="mr-2">d) Telling the client to cheer up.</label>
+                                        <p class="answer-feedback text-sm mt-1"></p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="submitAssessment('kc3Form', kc3Answers)" class="w-full sm:w-auto px-6 py-3 bg-accent-green text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                                    Submit Knowledge Check 3
+                                </button>
+                                <p id="kc3Result" class="mt-4 text-lg font-bold"></p>
+                            </form>
+                        </div>` }
                 ]
             },
             {
@@ -618,6 +1174,78 @@
             }
         ];
 
+        // --- Assessment Answer Keys for Modules 0-3 ---
+        const preTestAnswers = {
+            q1: 'b', q2: 'b', q3: 'b', q4: 'c', q5: 'c',
+            q6: 'b', q7: 'b', q8: 'b', q9: 'b', q10: 'a',
+            q11: 'c', q12: 'b', q13: 'b', q14: 'd', q15: 'b'
+        };
+        const kc1Answers = {
+            kc1q1: 'b', kc1q2: 'b', kc1q3: 'b'
+        };
+        const kc2Answers = {
+            kc2q1: 'b', kc2q2: 'c', kc2q3: 'b'
+        };
+        const kc3Answers = {
+            kc3q1: 'b', kc3q2: 'b', kc3q3: 'b'
+        };
+
+        // --- Assessment Submission Function ---
+        function submitAssessment(formId, correctAnswers) {
+            const form = document.getElementById(formId);
+            const resultDisplay = document.getElementById(formId.replace('Form', 'Result'));
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            // Clear previous feedback
+            form.querySelectorAll('.answer-feedback').forEach(el => {
+                el.textContent = '';
+                el.classList.remove('text-accent-green', 'text-warning-red');
+            });
+            // Iterate over all questions in the form
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = Object.keys(correctAnswers)[i - 1];
+                const selected = form.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackEl = form.querySelector(`input[name="${questionName}"]`).closest('.shadow-sm').querySelector('.answer-feedback');
+                if (selected) {
+                    const isCorrect = selected.value === correctAnswers[questionName];
+                    if (isCorrect) {
+                        score++;
+                        feedbackEl.textContent = 'Correct!';
+                        feedbackEl.classList.add('text-accent-green');
+                    } else {
+                        feedbackEl.textContent = `Incorrect. Correct answer is ${correctAnswers[questionName].toUpperCase()}.`;
+                        feedbackEl.classList.add('text-warning-red');
+                    }
+                } else {
+                    feedbackEl.textContent = 'Unanswered. Please select an option.';
+                    feedbackEl.classList.add('text-warning-red');
+                }
+            }
+            const percentage = ((score / totalQuestions) * 100).toFixed(0);
+            const isPassing = percentage >= 75;
+            resultDisplay.textContent = `Score: ${score} out of ${totalQuestions} (${percentage}%)`;
+            if (isPassing) {
+                resultDisplay.classList.remove('text-warning-red');
+                resultDisplay.classList.add('text-accent-green');
+            } else {
+                resultDisplay.classList.remove('text-accent-green');
+                resultDisplay.classList.add('text-warning-red');
+            }
+            // Save progress if passed
+            if (isPassing) {
+                const lessonMap = {
+                    'preTestForm': 'M0L1',
+                    'kc1Form': 'M1L1',
+                    'kc2Form': 'M2L1',
+                    'kc3Form': 'M3L1'
+                };
+                const lessonId = lessonMap[formId];
+                if (lessonId) {
+                    saveProgress(lessonId, true, percentage);
+                }
+            }
+        }
+
         // --- PWA Generation ---
         function generatePWA() {
             // Create Manifest
@@ -755,7 +1383,7 @@
                                 ? renderQuizInterface(currentLesson) 
                                 : currentLesson.content
                             }
-                            ${!isQuiz ? `
+                            ${!isQuiz && !currentLesson.lessonId.startsWith('M0L1') && !currentLesson.lessonId.startsWith('M1L1') && !currentLesson.lessonId.startsWith('M2L1') && !currentLesson.lessonId.startsWith('M3L1') ? `
                             <div class="mt-8 pt-6 border-t border-gray-100 flex justify-end">
                                 <button onclick="markLessonComplete('${currentLesson.lessonId}')" class="${isCompleted ? 'bg-green-500 hover:bg-green-600' : 'bg-primary hover:bg-purple-700'} text-white px-6 py-3 rounded-lg font-bold shadow-md transition transform hover:scale-105 flex items-center">
                                     <i class="fas ${isCompleted ? 'fa-check-double' : 'fa-check'} mr-2"></i>
@@ -907,7 +1535,6 @@
         window.postReply = async (docId) => {
             const text = document.getElementById(`reply-${docId}`).value;
             if(!text.trim()) return;
-            // Note: In a real app, use arrayUnion. Here we simplify for the single-file constraint/demo logic
             try {
                const r = reflections.find(x => x.id === docId);
                const newReply = { 
