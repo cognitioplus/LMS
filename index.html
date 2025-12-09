@@ -760,106 +760,182 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Cognitio+. All rights reserved.</p>
-            <p>Mental Health and Well-Being Paraprofessional Certification Course</p>
+            <p>&copy; 2025 Cognitio+. All Rights Reserved.</p>
             <p style="margin-top: 20px; font-size: 0.9rem;">
                 For support, contact: <a href="mailto:hello@cognitioplus.com">hello@cognitioplus.com</a>
             </p>
         </div>
     </footer>
 
-    <!-- Purchase Modal -->
-    <div class="modal" id="purchaseModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Get Your Certificate</h2>
-                <span class="close-modal" onclick="closePurchaseModal()">×</span>
-            </div>
-            
-            <div id="purchaseForm">
-                <div class="certificate-preview">
-                    <h3>Certificate of Completion</h3>
-                    <p class="price-tag">₱1,500</p>
-                    <p>Complete the course and purchase your official certificate recognized by mental health professionals</p>
-                </div>
+   <!-- Purchase Modal -->
+<div class="modal" id="purchaseModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Get Your Certificate</h2>
+      <span class="close-modal" onclick="closePurchaseModal()">×</span>
+    </div>
+    
+    <div id="purchaseForm">
+      <div class="certificate-preview">
+        <h3>Certificate of Completion</h3>
+        <p class="price-tag">₱1,500</p>
+        <p>Complete the course and purchase your official certificate recognized by mental health professionals</p>
+      </div>
 
-                <div class="form-group">
-                    <label>Full Name (as it should appear on certificate) *</label>
-                    <input type="text" id="fullName" placeholder="Juan Dela Cruz" required>
-                </div>
+      <div class="form-group">
+        <label>Full Name (as it should appear on certificate) *</label>
+        <input type="text" id="fullName" placeholder="Juan Dela Cruz" required>
+      </div>
 
-                <div class="form-group">
-                    <label>Email Address *</label>
-                    <input type="email" id="email" placeholder="juan@example.com" required>
-                </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="juan@example.com" required>
+      </div>
 
-                <div class="form-group">
-                    <label>Contact Number *</label>
-                    <input type="tel" id="contactNumber" placeholder="+63 912 345 6789" required>
-                </div>
+      <div class="form-group">
+        <label>Contact Number *</label>
+        <input type="tel" id="contactNumber" placeholder="+63 912 345 6789" required>
+      </div>
 
-                <div class="form-group">
-                    <label>Payment Method *</label>
-                    <select id="paymentMethod">
-                        <option value="gcash">GCash</option>
-                        <option value="paymaya">PayMaya</option>
-                        <option value="card">Credit/Debit Card</option>
-                        <option value="bank">Bank Transfer</option>
-                    </select>
-                </div>
+      <!-- Redirect directly to Xendit payment link -->
+      <a href="https://checkout.xendit.co/od/ccmhpp" target="_blank" 
+         class="btn btn-primary" 
+         style="display:block; width: 100%; padding: 14px; font-size: 1.1rem; text-align:center; text-decoration:none;"
+         onclick="generateUserNumber()">
+        Proceed to Payment - ₱1,500
+      </a>
+    </div>
+  </div>
+</div>
 
-                <button class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem;" onclick="processPurchase()">
-                    Proceed to Payment - ₱1,500
-                </button>
+<script>
+  // Generate a random user number (5 digits)
+  function generateUserNumber() {
+    const userNumber = Math.floor(10000 + Math.random() * 90000);
+    // Store it locally for later use (e.g., certificate generation)
+    localStorage.setItem("userNumber", userNumber);
 
-                <p style="text-align: center; margin-top: 20px; color: var(--text-light); font-size: 0.9rem;">
-                    * You must complete all modules before purchasing the certificate
-                </p>
-            </div>
+    // Example: also generate a verification code
+    const baseCode = "CCMHP-36912-2025-0777";
+    const verificationCode = `${baseCode}${userNumber}`;
+    localStorage.setItem("verificationCode", verificationCode);
 
-            <div id="certificateGeneration" class="hidden">
-                <div class="success-message">
-                    ✓ Payment Successful! Your certificate has been generated.
-                </div>
-                <canvas id="certificateCanvas" width="1200" height="850"></canvas>
-                <div class="text-center mt-20">
-                    <button class="btn btn-primary" onclick="downloadCertificate()" style="margin-bottom: 15px;">📥 Download Certificate</button>
-                    <p style="background: var(--bg-light); padding: 15px; border-radius: 8px; margin-top: 20px;">
-                        <strong>Verification Code:</strong><br>
-                        <span id="verificationCode" style="font-size: 1.3rem; color: var(--primary); font-weight: 700;"></span>
-                    </p>
-                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 10px;">
-                        Keep this code safe. Others can verify your certificate using this code.
-                    </p>
-                </div>
-            </div>
-        </div>
+    console.log("Generated User Number:", userNumber);
+    console.log("Verification Code:", verificationCode);
+  }
+</script>
+
+
+
+<p style="text-align: center; margin-top: 20px; color: var(--text-light); font-size: 0.9rem;">
+    * You must complete all modules before purchasing the certificate
+</p>
+</div>
+
+<div id="certificateGeneration" class="hidden">
+    <div class="success-message">
+        ✓ Payment Successful! Your certificate has been generated.
+    </div>
+    <canvas id="certificateCanvas" width="1200" height="850"></canvas>
+    <div class="text-center mt-20">
+        <button class="btn btn-primary" onclick="downloadCertificate()" style="margin-bottom: 15px;">
+            📥 Download Certificate
+        </button>
+        <p style="background: var(--bg-light); padding: 15px; border-radius: 8px; margin-top: 20px;">
+            <strong>Verification Code:</strong><br>
+            <span id="verificationCode" style="font-size: 1.3rem; color: var(--primary); font-weight: 700;"></span>
+        </p>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 10px;">
+            Keep this code safe. Others can verify your certificate using this code.
+        </p>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+  // Function to generate a random user number
+  function generateUserNumber() {
+    // Example: 5-digit random number
+    return Math.floor(10000 + Math.random() * 90000);
+  }
+
+  // Function to generate verification code with user number
+  function generateVerificationCode() {
+    const userNumber = generateUserNumber();
+    const baseCode = "CCMHP-36912-2025-0777";
+    const verificationCode = `${baseCode}${userNumber}`;
+    document.getElementById("verificationCode").innerText = verificationCode.toUpperCase();
+  }
+
+  // Call this function after payment success
+  document.addEventListener("DOMContentLoaded", function() {
+    // Example: trigger when certificateGeneration is shown
+    const certGen = document.getElementById("certificateGeneration");
+    if (certGen) {
+      generateVerificationCode();
+    }
+  });
+</script>
+
+<!-- Verification Modal -->
+<div class="modal" id="verificationModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Verify Certificate</h2>
+      <span class="close-modal" onclick="closeVerificationModal()">×</span>
     </div>
 
-    <!-- Verification Modal -->
-    <div class="modal" id="verificationModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Verify Certificate</h2>
-                <span class="close-modal" onclick="closeVerificationModal()">×</span>
-            </div>
+    <p style="margin-bottom: 20px; color: var(--text-light);">
+      Enter the verification code found on the certificate to validate its authenticity.
+    </p>
 
-            <p style="margin-bottom: 20px; color: var(--text-light);">
-                Enter the verification code found on the certificate to validate its authenticity.
-            </p>
-
-            <div class="form-group">
-                <label>Verification Code</label>
-                <input type="text" id="verifyCode" placeholder="CCMHP-XXXX-XXXX" style="text-transform: uppercase;">
-            </div>
-
-            <button class="btn btn-primary" style="width: 100%; padding: 14px;" onclick="verifyCertificate()">
-                Verify Certificate
-            </button>
-
-            <div id="verificationResult" class="mt-20"></div>
-        </div>
+    <div class="form-group">
+      <label>Verification Code</label>
+      <input type="text" id="verifyCode" 
+             placeholder="CCMHP-36912-2025-0777[USER-NUMBER]" 
+             style="text-transform: uppercase;">
     </div>
+
+    <div class="form-group">
+      <label>User Number *</label>
+      <input type="text" id="userNumber" placeholder="e.g. 12345" required>
+    </div>
+
+    <button class="btn btn-primary" style="width: 100%; padding: 14px;" onclick="generateVerificationCode()">
+      Generate Verification Code
+    </button>
+
+    <button class="btn btn-primary" style="width: 100%; padding: 14px; margin-top:10px;" onclick="verifyCertificate()">
+      Verify Certificate
+    </button>
+
+    <div id="verificationResult" class="mt-20"></div>
+  </div>
+</div>
+
+<script>
+  function generateVerificationCode() {
+    const userNumber = document.getElementById("userNumber").value.trim();
+    if (userNumber) {
+      const code = `CCMHP-36912-2025-0777${userNumber}`;
+      document.getElementById("verifyCode").value = code.toUpperCase();
+    } else {
+      alert("Please enter your User Number first.");
+    }
+  }
+
+  function verifyCertificate() {
+    const code = document.getElementById("verifyCode").value.trim();
+    // Add your verification logic here (e.g., check against database)
+    if (code) {
+      document.getElementById("verificationResult").innerText = "Verification successful (sample logic).";
+    } else {
+      document.getElementById("verificationResult").innerText = "Please generate and enter a valid code.";
+    }
+  }
+</script>
+
 
     <script>
         // Course Data Structure
