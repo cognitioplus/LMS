@@ -78,6 +78,18 @@ function generateCertificate() {
   ctx.fillText("Verification Code: " + verificationCode, canvas.width / 2, 500);
 
   document.getElementById("verificationCode").innerText = verificationCode;
+
+  // Generate QR Code
+  const qrContainer = document.getElementById("qrCodeContainer");
+  qrContainer.innerHTML = ""; // clear previous QR
+  new QRCode(qrContainer, {
+    text: verificationCode,
+    width: 128,
+    height: 128,
+    colorDark: "#007bff",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
 }
 
 function downloadCertificate() {
@@ -113,3 +125,4 @@ document.addEventListener("DOMContentLoaded", function() {
     generateCertificate();
   }
 });
+
