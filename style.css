@@ -1,4 +1,8 @@
-* {
+{
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -207,72 +211,6 @@ h4, h5, h6 {
 .module-duration {
     font-size: 0.85rem;
     color: var(--text-light);
-}
-/* Course Overview Section */
-.overview-card {
-    background: var(--bg-light);
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.overview-card h3 {
-    color: var(--primary);
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-}
-
-.overview-card table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0;
-}
-
-.overview-card th,
-.overview-card td {
-    border: 1px solid var(--border);
-    padding: 10px;
-    text-align: left;
-}
-
-.overview-card th {
-    background: var(--primary);
-    color: white;
-    font-weight: 600;
-}
-
-.overview-card ul, .overview-card ol {
-    padding-left: 30px;
-    margin: 10px 0;
-}
-
-.overview-card ul ul {
-    margin-top: 8px;
-}
-
-.module-button-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-    margin-top: 15px;
-}
-
-.module-overview-btn {
-    width: 100%;
-    text-align: left;
-    padding: 12px 16px;
-    font-size: 0.95rem;
-    background: white;
-    border: 2px solid var(--border);
-    color: var(--primary);
-    transition: all 0.2s;
-}
-
-.module-overview-btn:hover {
-    border-color: var(--primary);
-    background: rgba(180, 37, 170, 0.05);
-    transform: translateY(-2px);
 }
 
 .progress-bar {
@@ -512,26 +450,267 @@ h4, h5, h6 {
     text-align: center;
 }
 
-/* Footer */
-.footer {
-    background: var(--bg-dark);
-    color: var(--white);
-    padding: 40px 0;
-    text-align: center;
+/* Stay Connected Section */
+.stay-connected {
+    background: var(--white);
+    padding: 60px 0;
     margin-top: 60px;
 }
 
-.footer p {
-    margin-bottom: 10px;
+.stay-connected h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 30px;
 }
 
-.footer a {
-    color: var(--accent);
+.stay-connected .contact-image {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stay-connected .contact-image img {
+    max-width: 250px;
+    height: auto;
+}
+
+.stay-connected p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.contact-info {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.contact-info a {
+    color: var(--primary);
     text-decoration: none;
 }
 
-.footer a:hover {
+.contact-info a:hover {
     text-decoration: underline;
+}
+
+.social-icons {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 15px;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+}
+
+.contact-form-section {
+    background: #0a2540;
+    color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.contact-form-section h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.contact-form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form-section label {
+    color: #c2e0f4;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.contact-form-section input,
+.contact-form-section textarea {
+    width: 100%;
+    background-color: #ffffff;
+    color: #0a2540;
+    border: 2px solid #f59e0b;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.contact-form-section textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form-section button {
+    background-color: #f59e0b;
+    color: #0a2540;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form-section button:hover {
+    background-color: #E08C00;
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.form-footer span {
+    color: #f59e0b;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* Course Overview Section */
+.overview-card {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.overview-card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.overview-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.overview-card th,
+.overview-card td {
+    border: 1px solid var(--border);
+    padding: 10px;
+    text-align: left;
+}
+
+.overview-card th {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.overview-card ul, .overview-card ol {
+    padding-left: 30px;
+    margin: 10px 0;
+}
+
+.overview-card ul ul {
+    margin-top: 8px;
+}
+
+.module-button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.module-overview-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    background: white;
+    border: 2px solid var(--border);
+    color: var(--primary);
+    transition: all 0.2s;
+}
+
+.module-overview-btn:hover {
+    border-color: var(--primary);
+    background: rgba(180, 37, 170, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Module Grid for Hub Page */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.module-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+}
+
+.module-card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.module-card p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.module-card .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Boundary List */
+.boundary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.boundary-item {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid var(--error);
+}
+
+.healthy-item {
+    border-left-color: var(--success);
 }
 
 /* Utility Classes */
@@ -595,6 +774,10 @@ h4, h5, h6 {
     .price-tag {
         font-size: 2rem;
     }
+
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Loading State */
@@ -610,4 +793,26 @@ h4, h5, h6 {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-dark);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
