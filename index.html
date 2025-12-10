@@ -1,27 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certification Course for Mental Health and Well-Being Paraprofessional | Cognitio+</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* ... [Your complete CSS from knowledge base] ... */<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certification Course for Mental Health and Well-Being Paraprofessional | Cognitio+</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* ... [Your complete CSS from knowledge base] ... */
-        /* (All styles remain identical—no changes needed) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      :root {
             --primary: #b425aa;
             --primary-light: #c80ec9;
             --accent: #D4AF37;
@@ -34,9 +16,66 @@
             --success: #4caf50;
             --error: #f44336;
         }
-        /* ... [Rest of your CSS unchanged] ... */
-        /* (Full CSS included as in your knowledge base) */
     </style>
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                /* Course Overview Card */
+.overview-card {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.overview-card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* Module Grid */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.module-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+}
+
+.module-card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.module-card p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* Ensure buttons in cards are full-width */
+.module-card .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+    <title>Certification Course for Mental Health and Well-Being Paraprofessional | Cognitio+</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <!-- Header -->
@@ -44,7 +83,11 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-section">
-                    <img src="https://appimize.app/assets/apps/user_1097/images/b2e254093bca_935_1097.png" alt="Cognitio+ Logo" class="logo">
+                    <img
+                        src="https://appimize.app/assets/apps/user_1097/images/b2e254093bca_935_1097.png"
+                        alt="Cognitio+ Logo"
+                        class="logo"
+                    />
                     <div class="site-title">Mental Health Paraprofessional Certification</div>
                 </div>
                 <div class="nav-buttons">
@@ -58,52 +101,156 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Certification Course for Mental Health and Well-Being Paraprofessional</h1>
-            <p>Equip yourself with essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support</p>
-            <button class="btn btn-primary" onclick="scrollToContent()" style="font-size: 1.1rem; padding: 12px 32px;">Start Learning for Free</button>
+            <h1>Certification Course for Mental Health and Well-Being Paraprofessionals</h1>
+            <p>Developed by Cognitio+ • Aligned with WHO mhGAP, WHO QualityRights, and PCMH 2024–2028 Framework</p>
+            <button class="btn btn-primary" onclick="scrollToModules()" style="font-size: 1.1rem; padding: 12px 32px;">
+                View All Modules
+            </button>
         </div>
     </section>
 
-    <!-- Section Tabs -->
-    <div class="container">
-        <div class="section-tabs">
-            <button class="tab-btn active" onclick="switchSection('course')">Course Content</button>
-            <button class="tab-btn" onclick="switchSection('discussion')">Class Discussions</button>
+    <!-- Course Overview -->
+    <section class="course-overview" id="overview" style="background: white; padding: 60px 0;">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Course Overview</h2>
+
+            <!-- I. Purpose & Frameworks -->
+            <div class="overview-card">
+                <h3>I. Course Overview</h3>
+                <p><strong>Purpose:</strong> This certification course equips entry-level mental health and well-being paraprofessionals with the essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support online and in community contexts.</p>
+                <p><strong>Guiding Frameworks:</strong></p>
+                <ul>
+                    <li>WHO Mental Health Gap Action Programme (mhGAP), 2023 update</li>
+                    <li>WHO QualityRights Initiative: Dignity, Recovery, and Human Rights in Mental Health</li>
+                    <li>Philippine Council for Mental Health (PCMH) Strategic Framework 2024–2028</li>
+                </ul>
+                <p><strong>Course Philosophy:</strong> Applies Psychological First Aid (PFA) principles—<em>Look, Listen, Link</em>.</p>
+            </div>
+
+            <!-- II. Certification Structure -->
+            <div class="overview-card">
+                <h3>II. Certification Structure</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Description</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Part 1 – Foundational Training</td><td>Online modules</td><td>24 hours</td></tr>
+                        <tr><td>Part 2 – Practicum</td><td>10 supervised sessions</td><td>16 hours</td></tr>
+                        <tr><td>Certification Validity</td><td>2 years (renewable)</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- III. Learning Outcomes -->
+            <div class="overview-card">
+                <h3>III. Course Learning Outcomes</h3>
+                <p>Upon completion, trainees will be able to:</p>
+                <ol>
+                    <li>Apply generative listening and empathy.</li>
+                    <li>Demonstrate ethical communication and data privacy.</li>
+                    <li>Recognize and respond to crisis indicators.</li>
+                    <li>Make appropriate referrals.</li>
+                    <li>Practice self-care and mindfulness.</li>
+                    <li>Uphold human rights and cultural sensitivity.</li>
+                </ol>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div id="courseSection" class="main-content">
-            <aside class="sidebar">
-                <div class="card">
-                    <h3>Course Progress</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="overallProgress" style="width: 0%"></div>
-                    </div>
-                    <p class="mt-20"><strong><span id="progressPercentage">0</span>%</strong> Complete</p>
-                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 10px;">
-                        <span id="completedCount">0</span> of <span id="totalCount">0</span> lessons completed
-                    </p>
+    <!-- Module Navigation Section -->
+    <section class="modules-section" id="modules" style="padding: 60px 0; background: var(--bg-light);">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Course Modules</h2>
+            <div class="module-grid">
+                <!-- Module 0 -->
+                <div class="module-card">
+                    <h3>Module 0: Orientation and Course Structure</h3>
+                    <p><strong>Duration:</strong> 2 hours</p>
+                    <p>Includes Pre-Test, course philosophy, and structure.</p>
+                    <a href="module0.html" class="btn btn-primary" style="width: 100%;">Go to Module 0</a>
                 </div>
-                <div class="card">
-                    <h3>Course Modules</h3>
-                    <div id="moduleList"></div>
-                </div>
-            </aside>
 
-            <main class="content-area">
-                <div class="card">
-                    <div id="lessonContent"></div>
-                    <div class="lesson-nav">
-                        <button class="btn btn-secondary" id="prevBtn" onclick="previousLesson()">← Previous</button>
-                        <button class="btn btn-primary" id="nextBtn" onclick="nextLesson()">Next →</button>
-                    </div>
+                <!-- Module 1 -->
+                <div class="module-card">
+                    <h3>Module 1: Foundational Frameworks and Your Role</h3>
+                    <p><strong>Duration:</strong> 3 hours</p>
+                    <p>RA 11036, WHO mhGAP, and the paraprofessional role.</p>
+                    <a href="module1.html" class="btn btn-primary" style="width: 100%;">Go to Module 1</a>
                 </div>
-            </main>
+
+                <!-- Module 2 -->
+                <div class="module-card">
+                    <h3>Module 2: Ethics, Boundaries, and Digital Confidentiality</h3>
+                    <p><strong>Duration:</strong> 3 hours</p>
+                    <p>RA 10173, informed consent, and professional boundaries.</p>
+                    <a href="module2.html" class="btn btn-primary" style="width: 100%;">Go to Module 2</a>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module-card">
+                    <h3>Module 3: Psychological First Aid (PFA) and Scope</h3>
+                    <p><strong>Duration:</strong> 3 hours</p>
+                    <p>Look–Listen–Link model and PFA principles.</p>
+                    <a href="module3.html" class="btn btn-primary" style="width: 100%;">Go to Module 3</a>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module-card">
+                    <h3>Module 4: Core Communication and Basic Coping Skills</h3>
+                    <p><strong>Duration:</strong> 4 hours</p>
+                    <p>8 core skills: rapport, empathy, reflection, grounding, etc.</p>
+                    <a href="module4.html" class="btn btn-primary" style="width: 100%;">Go to Module 4</a>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module-card">
+                    <h3>Module 5: Crisis Intervention and Safe Referral</h3>
+                    <p><strong>Duration:</strong> 4 hours</p>
+                    <p>Suicide risk, crisis protocol, and Philippine referral pathways.</p>
+                    <a href="module5.html" class="btn btn-primary" style="width: 100%;">Go to Module 5</a>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module-card">
+                    <h3>Module 6: Cultural Sensitivity and Inclusive Practice</h3>
+                    <p><strong>Duration:</strong> 3 hours</p>
+                    <p>Filipino values (Hiya, Utang na Loob), LGBTQIA+, PWDs, and indigenous contexts.</p>
+                    <a href="module6.html" class="btn btn-primary" style="width: 100%;">Go to Module 6</a>
+                </div>
+
+                <!-- Module 7 -->
+                <div class="module-card">
+                    <h3>Module 7: Paraprofessional Self-Care</h3>
+                    <p><strong>Duration:</strong> 3 hours</p>
+                    <p>Compassion fatigue, burnout, and Cognitio+ digital tools.</p>
+                    <a href="module7.html" class="btn btn-primary" style="width: 100%;">Go to Module 7</a>
+                </div>
+
+                <!-- Module 8 -->
+                <div class="module-card">
+                    <h3>Module 8: Practicum and Mentorship</h3>
+                    <p><strong>Duration:</strong> 16 hours</p>
+                    <p>Supervised sessions, documentation, and observation rubric.</p>
+                    <a href="module8.html" class="btn btn-primary" style="width: 100%;">Go to Module 8</a>
+                </div>
+
+                <!-- Module 9 -->
+                <div class="module-card">
+                    <h3>Module 9: Integration and Certification</h3>
+                    <p><strong>Duration:</strong> 1 hour</p>
+                    <p>Final Assessment (Post-Test) and certification process.</p>
+                    <a href="module9.html" class="btn btn-primary" style="width: 100%;">Go to Module 9</a>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div id="discussionSection" class="main-content hidden">
+       <div id="discussionSection" class="main-content hidden">
             <aside class="discussion-sidebar">
                 <div class="discussion-card">
                     <h3>Discussion Topics</h3>
@@ -160,7 +307,7 @@
         </div>
     </footer>
 
-    <!-- Modals (unchanged) -->
+    <!-- Modals -->
     <!-- Purchase Modal -->
     <div class="modal" id="purchaseModal">
         <!-- ... your existing modal HTML ... -->
@@ -510,503 +657,12 @@
             }
         });
     </script>
-</body>
-</html>
-
-        /* (All styles remain identical—no changes needed) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --primary: #b425aa;
-            --primary-light: #c80ec9;
-            --accent: #D4AF37;
-            --bg-dark: #1a1a1a;
-            --bg-light: #f5f5f5;
-            --text-dark: #333;
-            --text-light: #666;
-            --white: #ffffff;
-            --border: #e0e0e0;
-            --success: #4caf50;
-            --error: #f44336;
-        }
-        /* ... [Rest of your CSS unchanged] ... */
-        /* (Full CSS included as in your knowledge base) */
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <img src="https://appimize.app/assets/apps/user_1097/images/b2e254093bca_935_1097.png" alt="Cognitio+ Logo" class="logo">
-                    <div class="site-title">Mental Health Paraprofessional Certification</div>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="showVerificationModal()">Verify Certificate</button>
-                    <button class="btn btn-primary" onclick="showPurchaseModal()">Get Certified - ₱1,500</button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Certification Course for Mental Health and Well-Being Paraprofessional</h1>
-            <p>Equip yourself with essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support</p>
-            <button class="btn btn-primary" onclick="scrollToContent()" style="font-size: 1.1rem; padding: 12px 32px;">Start Learning for Free</button>
-        </div>
-    </section>
-
-    <!-- Section Tabs -->
-    <div class="container">
-        <div class="section-tabs">
-            <button class="tab-btn active" onclick="switchSection('course')">Course Content</button>
-            <button class="tab-btn" onclick="switchSection('discussion')">Class Discussions</button>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div id="courseSection" class="main-content">
-            <aside class="sidebar">
-                <div class="card">
-                    <h3>Course Progress</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="overallProgress" style="width: 0%"></div>
-                    </div>
-                    <p class="mt-20"><strong><span id="progressPercentage">0</span>%</strong> Complete</p>
-                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 10px;">
-                        <span id="completedCount">0</span> of <span id="totalCount">0</span> lessons completed
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Course Modules</h3>
-                    <div id="moduleList"></div>
-                </div>
-            </aside>
-
-            <main class="content-area">
-                <div class="card">
-                    <div id="lessonContent"></div>
-                    <div class="lesson-nav">
-                        <button class="btn btn-secondary" id="prevBtn" onclick="previousLesson()">← Previous</button>
-                        <button class="btn btn-primary" id="nextBtn" onclick="nextLesson()">Next →</button>
-                    </div>
-                </div>
-            </main>
-        </div>
-
-        <div id="discussionSection" class="main-content hidden">
-            <aside class="discussion-sidebar">
-                <div class="discussion-card">
-                    <h3>Discussion Topics</h3>
-                    <div class="module-filter">
-                        <select id="moduleFilter" onchange="filterDiscussions()">
-                            <option value="all">All Modules</option>
-                            <option value="course">Course-Wide</option>
-                            <!-- Options populated dynamically -->
-                        </select>
-                    </div>
-                    <div class="accessibility-notice">
-                        <strong>Accessibility Note:</strong> All discussions are moderated for respectful communication.
-                    </div>
-                </div>
-                <div class="discussion-card">
-                    <h3>Participation Guidelines</h3>
-                    <ul>
-                        <li>Use person-first language</li>
-                        <li>Respect confidentiality</li>
-                        <li>Be supportive and non-judgmental</li>
-                    </ul>
-                </div>
-            </aside>
-
-            <main class="discussion-main">
-                <div class="discussion-card">
-                    <h2>Share Your Reflection</h2>
-                    <div class="form-group">
-                        <label for="discussionModule">Module/Topic</label>
-                        <select id="discussionModule" required>
-                            <!-- Populated from course modules -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="discussionContent">Your Reflection</label>
-                        <textarea id="discussionContent" placeholder="Share your insights..." required></textarea>
-                    </div>
-                    <button class="btn btn-primary" onclick="submitDiscussion()">Post Reflection</button>
-                </div>
-                <div id="discussionsContainer">
-                    <div class="no-discussions">No reflections yet.</div>
-                </div>
-            </main>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Cognitio+. All Rights Reserved.</p>
-            <p style="margin-top: 20px; font-size: 0.9rem;">
-                For support, contact: <a href="mailto:hello@cognitioplus.com">hello@cognitioplus.com</a>
-            </p>
-        </div>
-    </footer>
-
-    <!-- Modals (unchanged) -->
-    <!-- Purchase Modal -->
-    <div class="modal" id="purchaseModal">
-        <!-- ... your existing modal HTML ... -->
-    </div>
-    <!-- Verification Modal -->
-    <div class="modal" id="verificationModal">
-        <!-- ... your existing modal HTML ... -->
-    </div>
-
-    <!-- Supabase Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
     <script>
-        // ========== SUPABASE INITIALIZATION ==========
-        const supabaseUrl = 'https://hzzytpbltwdvnmpmmfvl.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6enl0cGJsdHdkdm5tcG1tZmZ2bCIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU5NTYxNDA0LCJleHAiOjIwNzUxMzc0MDR9.RgqO4CThb9NRYUJ8C0DRULytnephMgvZW2Zz5E312iI';
-        const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
-
-        // ========== STATE ==========
-        let courseData = { modules: [] };
-        let currentModuleIndex = 0;
-        let currentLessonIndex = 0;
-        let completedLessons = new Set();
-        let userId = localStorage.getItem('user_id') || `user_${Date.now()}`;
-        localStorage.setItem('user_id', userId);
-
-        // ========== COURSE & DISCUSSION FUNCTIONS ==========
-        async function fetchCourseData() {
-            const { data, error } = await supabase
-                .from('course_modules')
-                .select('*')
-                .order('module_order', { ascending: true });
-            
-            if (error) {
-                console.error('Error fetching course:', error);
-                // Fallback to hardcoded data if needed
-                return;
-            }
-            
-            // Transform to expected structure
-            courseData.modules = data.map(module => ({
-                id: module.module_id,
-                title: module.title,
-                duration: module.duration,
-                lessons: JSON.parse(module.lessons || '[]')
-            }));
-            
-            renderModuleList();
-            renderDiscussionFilters();
-            loadLesson(0, 0);
-            updateLessonCounts();
-            loadUserProgress();
+        function scrollToModules() {
+            document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });
         }
-
-        async function loadUserProgress() {
-            const { data } = await supabase
-                .from('user_progress')
-                .select('completed_lessons')
-                .eq('user_id', userId)
-                .single();
-            
-            if (data) {
-                completedLessons = new Set(JSON.parse(data.completed_lessons || '[]'));
-                updateProgress();
-            }
-        }
-
-        async function saveUserProgress() {
-            const progressArray = Array.from(completedLessons);
-            await supabase
-                .from('user_progress')
-                .upsert(
-                    { user_id: userId, completed_lessons: JSON.stringify(progressArray) },
-                    { onConflict: 'user_id' }
-                );
-            updateProgress();
-        }
-
-        async function loadDiscussions(moduleFilter = 'all') {
-            let query = supabase
-                .from('discussions')
-                .select(`
-                    id,
-                    module_id,
-                    content,
-                    created_at,
-                    user:users!inner(full_name)
-                `)
-                .order('created_at', { ascending: false });
-            
-            if (moduleFilter !== 'all') {
-                query = query.eq('module_id', moduleFilter);
-            }
-            
-            const { data, error } = await query;
-            
-            if (error) {
-                console.error('Error loading discussions:', error);
-                document.getElementById('discussionsContainer').innerHTML = 
-                    '<div class="error-message">Failed to load discussions.</div>';
-                return;
-            }
-            
-            renderDiscussions(data);
-        }
-
-        async function submitDiscussion() {
-            const module = document.getElementById('discussionModule').value;
-            const content = document.getElementById('discussionContent').value.trim();
-            
-            if (!content) {
-                alert('Please enter your reflection.');
-                return;
-            }
-            
-            const { error } = await supabase
-                .from('discussions')
-                .insert({
-                    module_id: module,
-                    user_id: userId,
-                    content: content
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
-                        .replace(/(\r\n|\n|\r)/g, "<br>")
-                });
-            
-            if (error) {
-                console.error('Error posting discussion:', error);
-                alert('Failed to post reflection.');
-                return;
-            }
-            
-            document.getElementById('discussionContent').value = '';
-            loadDiscussions(document.getElementById('moduleFilter').value);
-        }
-
-        // ========== UI RENDERING ==========
-        function renderModuleList() {
-            const list = document.getElementById('moduleList');
-            list.innerHTML = courseData.modules.map((m, i) => `
-                <div class="module-item ${i === currentModuleIndex ? 'active' : ''}" onclick="loadModule(${i})">
-                    <div class="module-title">${m.title}</div>
-                    <div class="module-duration">⏱️ ${m.duration}</div>
-                </div>
-            `).join('');
-        }
-
-        function renderDiscussionFilters() {
-            const modules = courseData.modules;
-            const filterSelect = document.getElementById('moduleFilter');
-            const postSelect = document.getElementById('discussionModule');
-            
-            // Clear existing options
-            filterSelect.innerHTML = '<option value="all">All Modules</option>';
-            postSelect.innerHTML = '<option value="course">Course-Wide Discussion</option>';
-            
-            modules.forEach(m => {
-                const opt1 = document.createElement('option');
-                opt1.value = m.id;
-                opt1.textContent = m.title;
-                filterSelect.appendChild(opt1);
-                
-                const opt2 = document.createElement('option');
-                opt2.value = m.id;
-                opt2.textContent = m.title;
-                postSelect.appendChild(opt2);
-            });
-        }
-
-        function renderDiscussions(discussions) {
-            if (!discussions || discussions.length === 0) {
-                document.getElementById('discussionsContainer').innerHTML = 
-                    '<div class="no-discussions">No reflections yet. Be the first to share!</div>';
-                return;
-            }
-            
-            const html = discussions.map(d => `
-                <div class="discussion-card">
-                    <div class="discussion-header">
-                        <div class="discussion-title">${getModuleTitle(d.module_id)}</div>
-                    </div>
-                    <div class="discussion-meta">By ${d.user.full_name || 'Anonymous'} • ${new Date(d.created_at).toLocaleDateString()}</div>
-                    <div class="discussion-content">${d.content}</div>
-                </div>
-            `).join('');
-            
-            document.getElementById('discussionsContainer').innerHTML = html;
-        }
-
-        function getModuleTitle(id) {
-            if (id === 'course') return 'Course-Wide Discussion';
-            const m = courseData.modules.find(m => m.id === id);
-            return m ? m.title : id;
-        }
-
-        // ========== EXISTING COURSE NAVIGATION ==========
-        function loadModule(index) {
-            currentModuleIndex = index;
-            currentLessonIndex = 0;
-            loadLesson(index, 0);
-            renderModuleList();
-        }
-
-        function loadLesson(moduleIndex, lessonIndex) {
-            const module = courseData.modules[moduleIndex];
-            const lesson = module.lessons[lessonIndex];
-            currentModuleIndex = moduleIndex;
-            currentLessonIndex = lessonIndex;
-            
-            document.getElementById('lessonContent').innerHTML = `
-                <h2 style="color: var(--primary); margin-bottom: 10px;">${module.title}</h2>
-                <h3 style="color: var(--primary-light); margin-bottom: 20px;">${lesson.title}</h3>
-                <div class="lesson-content">${lesson.content}</div>
-            `;
-            
-            // Mark as completed and save
-            const lessonId = `${moduleIndex}-${lessonIndex}`;
-            completedLessons.add(lessonId);
-            saveUserProgress();
-            
-            updateNavigationButtons();
-            renderModuleList();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function nextLesson() {
-            const module = courseData.modules[currentModuleIndex];
-            if (currentLessonIndex < module.lessons.length - 1) {
-                loadLesson(currentModuleIndex, currentLessonIndex + 1);
-            } else if (currentModuleIndex < courseData.modules.length - 1) {
-                loadLesson(currentModuleIndex + 1, 0);
-            }
-        }
-
-        function previousLesson() {
-            if (currentLessonIndex > 0) {
-                loadLesson(currentModuleIndex, currentLessonIndex - 1);
-            } else if (currentModuleIndex > 0) {
-                const prev = courseData.modules[currentModuleIndex - 1];
-                loadLesson(currentModuleIndex - 1, prev.lessons.length - 1);
-            }
-        }
-
-        function updateNavigationButtons() {
-            const prev = document.getElementById('prevBtn');
-            const next = document.getElementById('nextBtn');
-            
-            prev.disabled = currentModuleIndex === 0 && currentLessonIndex === 0;
-            prev.style.opacity = prev.disabled ? '0.5' : '1';
-            
-            const module = courseData.modules[currentModuleIndex];
-            const isLastLesson = currentLessonIndex === module.lessons.length - 1;
-            const isLastModule = currentModuleIndex === courseData.modules.length - 1;
-            
-            if (isLastLesson && isLastModule) {
-                next.textContent = 'Course Complete ✓';
-                next.disabled = true;
-                next.style.opacity = '0.5';
-            } else {
-                next.textContent = 'Next →';
-                next.disabled = false;
-                next.style.opacity = '1';
-            }
-        }
-
-        function updateProgress() {
-            let total = 0;
-            courseData.modules.forEach(m => total += m.lessons.length);
-            const pct = Math.round((completedLessons.size / total) * 100);
-            document.getElementById('overallProgress').style.width = pct + '%';
-            document.getElementById('progressPercentage').textContent = pct;
-            document.getElementById('completedCount').textContent = completedLessons.size;
-            document.getElementById('totalCount').textContent = total;
-        }
-
-        function updateLessonCounts() {
-            let total = 0;
-            courseData.modules.forEach(m => total += m.lessons.length);
-            document.getElementById('totalCount').textContent = total;
-        }
-
-        // ========== SECTION SWITCHING ==========
-        function switchSection(section) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            document.getElementById('courseSection').classList.toggle('hidden', section !== 'course');
-            document.getElementById('discussionSection').classList.toggle('hidden', section !== 'discussion');
-            
-            if (section === 'discussion') {
-                loadDiscussions();
-            }
-        }
-
-        function filterDiscussions() {
-            const moduleFilter = document.getElementById('moduleFilter').value;
-            loadDiscussions(moduleFilter);
-        }
-
-        // ========== MODAL FUNCTIONS (unchanged) ==========
-        function showPurchaseModal() {
-            let total = 0;
-            courseData.modules.forEach(m => total += m.lessons.length);
-            if (completedLessons.size < total) {
-                alert(`Complete all modules first.\nYou've done ${completedLessons.size} of ${total} lessons.`);
-                return;
-            }
-            document.getElementById('purchaseModal').classList.add('active');
-        }
-
-        function closePurchaseModal() {
-            document.getElementById('purchaseModal').classList.remove('active');
-        }
-
-        function showVerificationModal() {
-            document.getElementById('verificationModal').classList.add('active');
-        }
-
-        function closeVerificationModal() {
-            document.getElementById('verificationModal').classList.remove('active');
-        }
-
-        // Certificate functions remain (using localStorage for demo)
-        function generateUserNumber() {
-            const num = Math.floor(10000 + Math.random() * 90000);
-            localStorage.setItem('userNumber', num);
-        }
-
-        function verifyCertificate() {
-            // In production, verify against Supabase
-            const code = document.getElementById('verifyCode').value.trim();
-            const result = document.getElementById('verificationResult');
-            result.innerHTML = `<div class="success-message">Verification simulated. In production, this checks Supabase.</div>`;
-        }
-
-        function scrollToContent() {
-            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // ========== INITIALIZE ==========
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchCourseData();
-        });
-
-        window.addEventListener('click', e => {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('active');
-            }
-        });
     </script>
 </body>
-</html>
+</html>        
