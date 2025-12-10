@@ -1,0 +1,21 @@
+{
+  "name": "cognitio-mental-health-course",
+  "version": "1.0.0",
+  "description": "Certification Course for Mental Health and Well-Being Paraprofessionals, built with HTML, CSS, and Supabase.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html",
+    "javascript",
+    "supabase",
+    "course"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}
