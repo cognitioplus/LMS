@@ -127,8 +127,8 @@
         <h1>Module 4: Core Communication and Basic Coping Skills</h1>
         <p><strong>Duration:</strong> 4 hours</p>
 
-        <!-- Lesson 1: Core Support Skills (Part 1) -->
-        <h2>4.1 Core Support Skills (Part 1)</h2>
+        <!-- Lesson 1: Core Support Skills -->
+        <h2>4.1 Core Support and Communication Skills (</h2>
         <p>Effective listening and communication form the bedrock of rapport and trust. These eight core skills guide the <strong>LISTEN</strong> phase of PFA.</p>
         
         <h3>1. Building Rapport</h3>
@@ -157,8 +157,6 @@
         </ul>
         <p>Empathy connects, sympathy can create distance.</p>
 
-        <!-- Lesson 2: Core Support Skills (Part 2) -->
-        <h2>4.2 Core Support Skills (Part 2)</h2>
         <h3>3. Reflecting</h3>
         <p>Paraphrasing the client's statements to confirm understanding and deepen the conversation.</p>
         <div class="video-container">
@@ -179,8 +177,6 @@
         <p><strong>Example:</strong></p>
         <blockquote>"It seems like you're feeling frustrated and disappointed about what happened."</blockquote>
 
-        <!-- Lesson 3: Core Support Skills (Part 3) -->
-        <h2>4.3 Core Support Skills (Part 3)</h2>
         <h3>5. Asking the Right Questions</h3>
         <p>Using open-ended questions that encourage detailed sharing and reflection.</p>
         <div class="video-container">
@@ -218,8 +214,6 @@
             <li>"What feels right to you?"</li>
         </ul>
 
-        <!-- Lesson 4: Core Support Skills (Part 4) & Generative Listening -->
-        <h2>4.4 Core Support Skills (Part 4) & Generative Listening</h2>
         <h3>7. Identifying Strengths</h3>
         <p>Pointing out the client's inherent resilience and coping abilities to promote self-efficacy.</p>
         <div class="video-container">
@@ -251,8 +245,7 @@
             <li><strong>Transformation:</strong> Help shift the client's perception toward empowerment</li>
         </ul>
 
-        <!-- Lesson 5: Teaching Basic Stabilizing Techniques -->
-        <h2>4.5 Teaching Basic Stabilizing Techniques</h2>
+        <h2>4.2 Teaching Basic Stabilizing Techniques</h2>
         <p>You can teach simple, evidence-based coping skills to promote immediate calmness.</p>
         
         <h3>1. Diaphragmatic (Belly) Breathing</h3>
@@ -301,6 +294,40 @@
             <a href="module5.html" class="btn">Module 5: Crisis Intervention and Safe Referral →</a>
         </div>
     </div>
+    
+<script>
+        // Mark Module 4 as complete and sync with index.html progress
+        function markModuleComplete() {
+            // Module 4 has 2 lessons: [Core Support Skills, Teaching Basic Stabilizing Techniques]
+            const module4Lessons = ['4-1', '4-2'];
+            
+            // Retrieve existing progress or initialize
+            let completedLessons = JSON.parse(localStorage.getItem('completedLessons') || '[]');
+            
+            // Add all Module 4 lessons if not already present
+            module0Lessons.forEach(lessonId => {
+                if (!completedLessons.includes(lessonId)) {
+                    completedLessons.push(lessonId);
+                }
+            });
+            
+            // Save back to localStorage
+            localStorage.setItem('completedLessons', JSON.stringify(completedLessons));
+            
+            // Show success feedback
+            alert('✅ Module 4 marked as complete! Your progress has been saved.');
+            
+            // Redirect to index.html (which will load progress from localStorage)
+            window.location.href = 'index.html';
+        }
+</script>
+
+<script>
+                              // In index.html
+let completedLessons = new Set(JSON.parse(localStorage.getItem('completedLessons') || '[]'));
+
+const module4Lessons = ['4-1', '4-2'];
+
+</script>
 </body>
 </html>
-
