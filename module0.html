@@ -338,7 +338,7 @@
     <script>
         // Mark Module 0 as complete and sync with index.html progress
         function markModuleComplete() {
-            // Module 0 has 4 lessons: [Pre-Test, Introduction, Course Goal, Course Structure]
+            // Module 0 has 4 lessons: [Pre-Test, Introduction, Course Goal and Philosophy, Course Structure]
             const module0Lessons = ['0-1', '0-2', '0-3', '0-4'];
             
             // Retrieve existing progress or initialize
@@ -361,13 +361,7 @@
             window.location.href = 'index.html';
         }
     </script>
-
-              <script>
-                              // In index.html
-let completedLessons = new Set(JSON.parse(localStorage.getItem('completedLessons') || '[]'));
-
-const module0Lessons = ['0-1', '0-2', '0-3', '0-4'];
-
+              
  </script>
 </body>
 </html>
