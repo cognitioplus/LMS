@@ -377,6 +377,15 @@
                 }
             }
         }
+        <script>
+        // Supabase Initialization
+        const supabaseUrl = 'https://hzzytpbltwdvnmpmmfvl.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6enl0cGJsdHdkdm5tcG1tZmZ2bCIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU5NTYxNDA0LCJleHAiOjIwNzUxMzc0MDR9.RgqO4CThb9NRYUJ8C0DRULytnephMgvZW2Zz5E312iI';
+        
+        // Initialize the client *after* the library script has loaded
+        supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
+ </script>
     </script>
+    
 </body>
 </html>
