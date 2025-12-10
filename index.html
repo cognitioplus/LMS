@@ -8,42 +8,38 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
     
-    <!-- External Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-
-    <!-- Inline Critical CSS for Layout/Branding Preservation -->
+    <!-- Inline Critical CSS -->
     <style>
         :root {
             --primary: #b425aa;
             --primary-light: #c80ec9;
-            --accent: #D4AF37;
+            --accent: #d4af37;
             --bg-dark: #1a1a1a;
             --bg-light: #f5f5f5;
             --text-dark: #333;
             --text-light: #666;
             --white: #ffffff;
             --border: #e0e0e0;
-            --success: #4caf50;
-            --error: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             background-color: white;
             font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
             color: var(--text-dark);
+            line-height: 1.6;
         }
 
-        /* Layout Utilities */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Removed .ref-discussion-grid - sections are now full width */
-
 
         .btn {
             display: inline-block;
@@ -54,6 +50,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
+            text-align: center;
         }
 
         .btn-primary {
@@ -71,6 +68,16 @@
             border: 2px solid var(--primary);
         }
 
+        .btn-accent {
+            background-color: var(--accent);
+            color: #1a1a1a;
+            border: none;
+        }
+
+        .btn-accent:hover {
+            background-color: #e0c24e;
+        }
+
         /* Header */
         .header {
             background: white;
@@ -85,6 +92,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-section {
@@ -104,9 +113,15 @@
             color: var(--primary);
         }
 
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--bg-dark), #2a2a2a);
+            background: var(--primary);
             color: white;
             padding: 80px 0;
             text-align: center;
@@ -165,35 +180,44 @@
 
         .module-card .btn {
             width: 100%;
-            text-align: center;
-            box-sizing: border-box; 
+            box-sizing: border-box;
             margin-top: auto;
         }
         
-        /* Discussion Embed Styling */
+        /* Discussion Embed */
         .discussion-embed-container {
             width: 100%;
-            min-height: 700px; /* Adjusted height for full-width view */
+            min-height: 700px;
             border: none;
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
         
-        /* Utility */
-        .hidden { display: none; }
-        
+        /* Modules Banner */
+        .modules-banner {
+            width: 100%;
+            height: 120px;
+            background: url('https://cognitioplus.aiwaapp.live/cache/media_cache/ad5ecb8027d304ccfaef1e1773cae67b.png') center/cover no-repeat;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        /* Footer */
         .footer {
-            background: var(--bg-dark);
+            background: var(--primary);
             color: white;
             padding: 40px 0;
             text-align: center;
             margin-top: 60px;
         }
         
-        .footer a { color: var(--accent); text-decoration: none; }
+        .footer a { 
+            color: white; 
+            text-decoration: underline; 
+        }
         
-        /* Modal Basic Styling */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -204,6 +228,15 @@
             align-items: center;
         }
         .modal.active { display: flex; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section { padding: 40px 0; }
+            .section-title { font-size: 1.8rem; }
+            .nav-buttons { width: 100%; justify-content: center; }
+            .header-content { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -220,8 +253,8 @@
                     <div class="site-title">Mental Health Paraprofessional Certification</div>
                 </div>
                 <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="showVerificationModal()">Verify Certificate</button>
-                    <button class="btn btn-primary" onclick="showPurchaseModal()">Get Certified - ₱1,500</button>
+                    <button class="btn btn-secondary" onclick="indexApp.showVerificationModal()">Verify Certificate</button>
+                    <button class="btn btn-primary" onclick="indexApp.showPurchaseModal()">Get Certified - ₱1,500</button>
                 </div>
             </div>
         </div>
@@ -233,7 +266,7 @@
             <h1>Certification Course for Mental Health and Well-Being Paraprofessionals</h1>
             <p>Developed by Cognitio+ • Aligned with WHO mhGAP, WHO QualityRights, and PCMH 2024–2028 Framework</p>
             <div style="margin-top: 30px;">
-                <button class="btn btn-primary" onclick="scrollToModules()" style="font-size: 1.1rem; padding: 12px 32px; background-color: var(--accent); border: none; color: #1a1a1a;">
+                <button class="btn btn-accent" onclick="indexApp.scrollToModules()" style="font-size: 1.1rem; padding: 12px 32px;">
                     Start Learning
                 </button>
             </div>
@@ -243,9 +276,9 @@
     <!-- New Detailed Course Overview Section (I, II, III, IV) -->
     <section class="course-overview" id="overview" style="background: white; padding: 60px 0;">
         <div class="container">
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Course Deep Dive</h2>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">Course Deep Dive</h2>
 
-            <!-- I. Course Overview (Purpose, Frameworks, Philosophy) -->
+            <!-- I. Course Overview -->
             <div class="overview-card">
                 <h3>I. Course Overview: Purpose, Frameworks, and Philosophy</h3>
                 <p><strong>Purpose:</strong> This certification course equips mental health and well-being paraprofessionals with the essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support online and in community contexts.</p>
@@ -365,150 +398,13 @@
     <!-- V. Course Modules Navigation Section -->
     <section class="modules-section" id="modules" style="padding: 60px 0; background: var(--bg-light);">
         <div class="container">
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">V. Course Modules (Foundational Training)</h2>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">V. Course Modules (Foundational Training)</h2>
             
-            <div class="module-grid">
-                
-                <!-- Module 0: Introduction and Orientation -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 0: Introduction and Orientation</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 1 hour</p>
-                        <p><strong>Objectives:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Orient learners to course structure, purpose, and ethical commitments.</li>
-                            <li>Introduce the role of the paraprofessional within the mental health ecosystem.</li>
-                        </ul>
-                    </div>
-                    <a href="module0.html" class="btn btn-primary">Go to Module 0</a>
-                </div>
+            <!-- Banner -->
+            <div class="modules-banner"></div>
 
-                <!-- Module 1: Foundations of Mental Health and Well-Being -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 1: Foundations of Mental Health and Well-Being</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 3 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Define mental health, mental illness, and psychosocial well-being.</li>
-                            <li>Describe key components of the Philippine Mental Health Act (RA 11036).</li>
-                            <li>Explain community and online support within the mental health continuum.</li>
-                        </ul>
-                    </div>
-                    <a href="module1.html" class="btn btn-primary">Go to Module 1</a>
-                </div>
-
-                <!-- Module 2: Ethics, Boundaries, and Digital Confidentiality -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 2: Ethics, Boundaries, and Digital Confidentiality</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 2 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Demonstrate respect for confidentiality and privacy.</li>
-                            <li>Identify ethical risks in online peer support.</li>
-                        </ul>
-                    </div>
-                    <a href="module2.html" class="btn btn-primary">Go to Module 2</a>
-                </div>
-
-                <!-- Module 3: Psychological First Aid (Look–Listen–Link) -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 3: Psychological First Aid (Look–Listen–Link)</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 3 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Apply PFA principles to emotional and mental distress.</li>
-                            <li>Recognize common reactions to crisis or trauma.</li>
-                        </ul>
-                    </div>
-                    <a href="module3.html" class="btn btn-primary">Go to Module 3</a>
-                </div>
-
-                <!-- Module 4: Core Support and Basic Coping Skills -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 4: Core Support and Basic Coping Skills</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 6 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Demonstrate eight core support and communication skills.</li>
-                            <li>Demonstrate skill in sharing basic coping skills.</li>
-                        </ul>
-                    </div>
-                    <a href="module4.html" class="btn btn-primary">Go to Module 4</a>
-                </div>
-
-                <!-- Module 5: Recognizing and Responding to Crisis -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 5: Recognizing and Responding to Crisis</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 4 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Identify warning signs of suicide or acute distress.</li>
-                            <li>Demonstrate appropriate response and referral steps.</li>
-                        </ul>
-                    </div>
-                    <a href="module5.html" class="btn btn-primary">Go to Module 5</a>
-                </div>
-
-                <!-- Module 6: Cultural Sensitivity and Community Context -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 6: Cultural Sensitivity and Community Context</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 2 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Adapt communication and support to diverse cultural and linguistic settings.</li>
-                            <li>Recognize indigenous, faith-based, and family-centered approaches.</li>
-                        </ul>
-                    </div>
-                    <a href="module6.html" class="btn btn-primary">Go to Module 6</a>
-                </div>
-
-                <!-- Module 7: Self-Care and Resilience -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 7: Self-Care and Resilience</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 3 hours</p>
-                        <p><strong>Learning Outcomes:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Recognize signs of burnout and compassion fatigue.</li>
-                            <li>Develop a personalized self-care plan and mindfulness routine.</li>
-                        </ul>
-                    </div>
-                    <a href="module7.html" class="btn btn-primary">Go to Module 7</a>
-                </div>
-
-                <!-- Module 8: Practicum and Mentorship (Part 2) -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 8: Practicum and Mentorship (Part 2)</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 16 hours (field + supervision)</p>
-                        <p><strong>Objectives:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Apply all eight core support skills in supervised online or community sessions.</li>
-                            <li>Receive mentor feedback on ethics, empathy, and communication.</li>
-                        </ul>
-                    </div>
-                    <a href="module8.html" class="btn btn-primary">Go to Module 8</a>
-                </div>
-
-                <!-- Module 9: Integration and Certification -->
-                <div class="module-card">
-                    <div>
-                        <h3>Module 9: Integration and Certification</h3>
-                        <p style="font-weight: 600; color: var(--primary);">Duration: 1 hour</p>
-                        <p><strong>Activities:</strong></p>
-                        <ul style="list-style: disc; margin-left: 15px; padding-left: 0; font-size: 0.9rem;">
-                            <li>Post-test (minimum passing score 80%)</li>
-                            <li>Feedback survey and self-assessment</li>
-                        </ul>
-                    </div>
-                    <a href="module9.html" class="btn btn-primary">Go to Module 9</a>
-                </div>
+            <div class="module-grid" id="module-grid">
+                <!-- Modules will be injected by JS -->
             </div>
         </div>
     </section>
@@ -516,7 +412,6 @@
     <!-- VI. Assessment Framework -->
     <section class="assessment-section" style="padding: 60px 0; background: white;">
         <div class="container">
-            <!-- VI. Assessment Framework -->
             <div class="overview-card">
                 <h3>VI. Assessment Framework</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed;">
@@ -566,10 +461,10 @@
         </div>
     </section>
 
-    <!-- VIII. Required References (NEW FULL-WIDTH SECTION) -->
+    <!-- VIII. Required References -->
     <section class="references-section" id="references" style="padding: 60px 0; background: var(--bg-light);">
         <div class="container">
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">VIII. Required References</h2>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">VIII. Required References</h2>
             
             <div class="overview-card">
                 <ol style="margin-left: 20px; padding-left: 0; font-size: 0.95rem;">
@@ -591,12 +486,11 @@
         </div>
     </section>
 
-    <!-- IX. Course Discussion (NEW FULL-WIDTH SECTION) -->
+    <!-- IX. Course Discussion -->
     <section class="discussion-section" id="discussion" style="padding: 60px 0 0 0; background: white;">
         <div class="container">
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">VIII. Course Discussion</h2>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">IX. Course Discussion</h2>
             <div class="overview-card" style="padding: 0; margin-bottom: 60px; background: white; box-shadow: none;">
-                <!-- Embedding discussion.html -->
                 <iframe src="discussion.html" class="discussion-embed-container" title="Course Discussion Board"></iframe>
             </div>
         </div>
@@ -611,69 +505,8 @@
             </p>
         </div>
     </footer>
-    <script>
-// ===============================
-// Progress Tracking Script
-// ===============================
 
-// Load completed lessons from localStorage
-let completedLessons = new Set(JSON.parse(localStorage.getItem('completedLessons') || '[]'));
-
-// Define lessons for each module (0–9)
-const modules = {
-  "module0.html": ["0-1", "0-2", "0-3", "0-4"],
-  "module1.html": ["1-4", "1-2", "1-3", "1-4"],
-  "module2.html": ["2-1", "2-2", "2-3"],
-  "module3.html": ["3-1", "3-2", "3-3", "3-4"],
-  "module4.html": ["4-1", "4-2"],
-  "module5.html": ["5-1", "5-2", "5-3", "5-4"],
-  "module6.html": ["6-1", "6-2", "6-3"],
-  "mpodule7.html": ["7-1", "7-2", "7-3"],
-  "module8.html": ["8-1", "8-2", "8-3"],
-  "module9.html": ["9-1", "9-2", "9-3"]
-};
-
-// Flatten all lessons into one array
-const allLessons = Object.values(modules).flat();
-
-// ===============================
-// Mark a lesson as complete
-// ===============================
-function markLessonComplete(lessonId) {
-  completedLessons.add(lessonId);
-  localStorage.setItem('completedLessons', JSON.stringify([...completedLessons]));
-  updateProgress();
-}
-
-// ===============================
-// Update progress display
-// ===============================
-function updateProgress() {
-  const totalLessons = allLessons.length;
-  const completedCount = completedLessons.size;
-  const percent = Math.round((completedCount / totalLessons) * 100);
-
-  // Update progress bar (if exists)
-  const progressBar = document.getElementById("progressBar");
-  if (progressBar) {
-    progressBar.style.width = percent + "%";
-    progressBar.innerText = percent + "%";
-  }
-
-  // Update progress text (if exists)
-  const progressText = document.getElementById("progressText");
-  if (progressText) {
-    progressText.innerText = `Completed ${completedCount} of ${totalLessons} lessons (${percent}%)`;
-  }
-}
-
-// ===============================
-// Initialize progress on page load
-// ===============================
-document.addEventListener("DOMContentLoaded", updateProgress);
-</script>
-    
-    <!-- Modals (Preserved for Logic) -->
+    <!-- Modals -->
     <div class="modal" id="purchaseModal">
         <div style="background: white; padding: 30px; border-radius: 12px; max-width: 400px; width: 90%;">
             <h3 style="color: var(--primary); margin-top: 0;">Complete Your Certification</h3>
@@ -682,7 +515,7 @@ document.addEventListener("DOMContentLoaded", updateProgress);
                 <strong>Price: ₱1,500</strong>
             </div>
             <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Proceed to Payment</button>
-            <button class="btn btn-secondary" style="width: 100%;" onclick="closePurchaseModal()">Cancel</button>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="indexApp.closePurchaseModal()">Cancel</button>
         </div>
     </div>
 
@@ -691,77 +524,122 @@ document.addEventListener("DOMContentLoaded", updateProgress);
             <h3 style="color: var(--primary); margin-top: 0;">Verify Certificate</h3>
             <input type="text" id="verifyCode" placeholder="Enter Certificate ID" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid var(--border); border-radius: 6px;">
             <div id="verificationResult" style="margin-bottom: 15px;"></div>
-            <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="verifyCertificate()">Verify</button>
-            <button class="btn btn-secondary" style="width: 100%;" onclick="closeVerificationModal()">Close</button>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="indexApp.verifyCertificate()">Verify</button>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="indexApp.closeVerificationModal()">Close</button>
         </div>
     </div>
 
-    <!-- Core Logic & Dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- User Requested Scripts -->
-    <script src="scripts.js"></script>
-    <script src="discussionRoutes.js"></script>
-
     <script>
-        // ========== SUPABASE & CORE LOGIC (Preserved) ==========
-        
-        // Define variables globally before assignment
-        let supabaseClient;
-        let courseData = { modules: [] };
-        let completedLessons = new Set();
-        let userId = localStorage.getItem('user_id') || `user_${Date.now()}`;
-        
-        // Supabase Initialization
-        const supabaseUrl = 'https://hzzytpbltwdvnmpmmfvl.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6enl0cGJsdHdkdm5tcG1tZmZ2bCIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU5NTYxNDA0LCJleHAiOjIwNzUxMzc0MDR9.RgqO4CThb9NRYUJ8C0DRULytnephMgvZW2Zz5E312iI';
-        
-        // Initialize the client *after* the library script has loaded
-        supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
-        
-        // Store user ID only once
-        localStorage.setItem('user_id', userId);
+        const indexApp = (function () {
+            const MODULES = [
+                { id: 'module0', title: 'Module 0: Introduction and Orientation', duration: '1 hour', file: 'module0.html' },
+                { id: 'module1', title: 'Module 1: Foundations of Mental Health and Well-Being', duration: '3 hours', file: 'module1.html' },
+                { id: 'module2', title: 'Module 2: Ethics, Boundaries, and Digital Confidentiality', duration: '2 hours', file: 'module2.html' },
+                { id: 'module3', title: 'Module 3: Psychological First Aid (Look–Listen–Link)', duration: '3 hours', file: 'module3.html' },
+                { id: 'module4', title: 'Module 4: Core Support and Basic Coping Skills', duration: '6 hours', file: 'module4.html' },
+                { id: 'module5', title: 'Module 5: Recognizing and Responding to Crisis', duration: '4 hours', file: 'module5.html' },
+                { id: 'module6', title: 'Module 6: Cultural Sensitivity and Community Context', duration: '2 hours', file: 'module6.html' },
+                { id: 'module7', title: 'Module 7: Self-Care and Resilience', duration: '3 hours', file: 'module7.html' },
+                { id: 'module8', title: 'Module 8: Practicum and Mentorship (Part 2)', duration: '16 hours (field + supervision)', file: 'module8.html' },
+                { id: 'module9', title: 'Module 9: Integration and Certification', duration: '1 hour', file: 'module9.html' }
+            ];
 
-        // Helper Functions
-        function scrollToModules() {
-            document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });
-        }
+            const LESSON_MAP = {
+                'module0.html': ['0-1', '0-2', '0-3', '0-4'],
+                'module1.html': ['1-1', '1-2', '1-3', '1-4'],
+                'module2.html': ['2-1', '2-2', '2-3'],
+                'module3.html': ['3-1', '3-2', '3-3', '3-4'],
+                'module4.html': ['4-1', '4-2'],
+                'module5.html': ['5-1', '5-2', '5-3', '5-4'],
+                'module6.html': ['6-1', '6-2', '6-3'],
+                'module7.html': ['7-1', '7-2', '7-3'],
+                'module8.html': ['8-1', '8-2', '8-3', '8-4'],
+                'module9.html': ['9-1', '9-2', '9-3', '9-4']
+            };
 
-        function showPurchaseModal() {
-            document.getElementById('purchaseModal').classList.add('active');
-        }
+            function init() {
+                renderModules();
+            }
 
-        function closePurchaseModal() {
-            document.getElementById('purchaseModal').classList.remove('active');
-        }
+            function renderModules() {
+                const grid = document.getElementById('module-grid');
+                if (!grid) return;
 
-        function showVerificationModal() {
-            document.getElementById('verificationModal').classList.add('active');
-        }
+                grid.innerHTML = '';
+                MODULES.forEach(mod => {
+                    const lessons = LESSON_MAP[mod.file] || [];
+                    const completed = lessons.filter(l => isLessonCompleted(l)).length;
+                    const progress = lessons.length ? Math.round((completed / lessons.length) * 100) : 0;
+                    
+                    const card = document.createElement('div');
+                    card.className = 'module-card';
+                    card.innerHTML = `
+                        <div>
+                            <h3>${mod.title}</h3>
+                            <p style="font-weight:600; color:var(--primary);">Duration: ${mod.duration}</p>
+                            <p><strong>Progress:</strong> ${completed}/${lessons.length} lessons (${progress}%)</p>
+                            ${progress === 100 ? '<span style="color:#4caf50; font-weight:bold;">✅ Completed</span>' : ''}
+                        </div>
+                        <a href="${mod.file}" class="btn btn-primary">Go to ${mod.id.replace('module', 'Module ')}</a>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
 
-        function closeVerificationModal() {
-            document.getElementById('verificationModal').classList.remove('active');
-        }
+            function isLessonCompleted(lessonId) {
+                const completed = JSON.parse(localStorage.getItem('completedLessons') || '[]');
+                return completed.includes(lessonId);
+            }
 
-        function verifyCertificate() {
-            const code = document.getElementById('verifyCode').value.trim();
-            const result = document.getElementById('verificationResult');
-            result.innerHTML = `<div style="color: var(--success); font-weight: bold;">Verification simulated. In production, this checks Supabase.</div>`;
-        }
+            function scrollToModules() {
+                document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });
+            }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-           console.log("Cognitio+ System Ready. Supabase client initialized.");
-           // Additional initialization logic can be handled by scripts.js
-        });
+            function showPurchaseModal() {
+                document.getElementById('purchaseModal').classList.add('active');
+            }
 
-        // Close modal on outside click
+            function closePurchaseModal() {
+                document.getElementById('purchaseModal').classList.remove('active');
+            }
+
+            function showVerificationModal() {
+                document.getElementById('verificationModal').classList.add('active');
+            }
+
+            function closeVerificationModal() {
+                document.getElementById('verificationModal').classList.remove('active');
+            }
+
+            function verifyCertificate() {
+                const code = document.getElementById('verifyCode').value.trim();
+                const result = document.getElementById('verificationResult');
+                if (code) {
+                    result.innerHTML = `<div style="color: var(--success); font-weight: bold;">Verification simulated. In production, this checks Supabase.</div>`;
+                } else {
+                    result.innerHTML = `<div style="color: #f44336;">Please enter a verification code.</div>`;
+                }
+            }
+
+            return {
+                init,
+                scrollToModules,
+                showPurchaseModal,
+                closePurchaseModal,
+                showVerificationModal,
+                closeVerificationModal,
+                verifyCertificate
+            };
+        })();
+
+        document.addEventListener('DOMContentLoaded', indexApp.init);
+
         window.addEventListener('click', e => {
             if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('active');
+                indexApp.closePurchaseModal();
+                indexApp.closeVerificationModal();
             }
         });
     </script>
-
 </body>
 </html>
