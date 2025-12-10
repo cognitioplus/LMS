@@ -312,14 +312,14 @@
 <script>
         // Mark Module 2 as complete and sync with index.html progress
         function markModuleComplete() {
-            // Module 2 has 3 lessons: [Context, Guiding Frameworks, The Roles and Goal, Stigma]
-            const module2Lessons = ['2-1', '2-2', '2-3'];
+            // Module 2 has 4 lessons: [Mental Health Context, Guiding Frameworks, The Roles and Goal, Understanding Stigma]
+            const module2Lessons = ['2-1', '2-2', '2-3', '2-4'];
             
             // Retrieve existing progress or initialize
             let completedLessons = JSON.parse(localStorage.getItem('completedLessons') || '[]');
             
             // Add all Module 2 lessons if not already present
-            module0Lessons.forEach(lessonId => {
+            module2Lessons.forEach(lessonId => {
                 if (!completedLessons.includes(lessonId)) {
                     completedLessons.push(lessonId);
                 }
@@ -340,7 +340,7 @@
                               // In index.html
 let completedLessons = new Set(JSON.parse(localStorage.getItem('completedLessons') || '[]'));
 
-const module2Lessons = ['2-1', '2-2', '2-3'];
+const module2Lessons = ['2-1', '2-2', '2-3', '2-4'];
 
 </script>
 </body>
