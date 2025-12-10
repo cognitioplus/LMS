@@ -13,6 +13,8 @@
   <!-- PDF & Screenshot Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     :root {
       --primary-dark: #b425aa;
@@ -66,15 +68,6 @@
       transform: rotate(-30deg);
       text-align: center;
       line-height: 1.8;
-      background: repeating-linear-gradient(
-        transparent 0%,
-        transparent 45%,
-        var(--text-dark) 45%,
-        var(--text-dark) 55%,
-        transparent 55%
-      );
-      -webkit-mask-image: linear-gradient(rgba(0,0,0,0.1) 50%, transparent 50%);
-      mask-image: linear-gradient(rgba(0,0,0,0.1) 50%, transparent 50%);
     }
 
     @media print {
@@ -119,14 +112,23 @@
       font-weight: 600;
       text-align: center;
       color: #333;
-      margin: 0 0 40px 0;
+      margin: 0 0 20px 0;
       position: relative;
       z-index: 1;
     }
 
+    .date-line {
+      text-align: center;
+      font-size: 1.15rem;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+      color: #555;
+    }
+
     .recipient-line {
       text-align: center;
-      margin: 60px 0 40px;
+      margin: 40px 0 40px;
       position: relative;
       z-index: 1;
     }
@@ -269,6 +271,9 @@
     <h1 class="title">CERTIFICATE</h1>
     <p class="subtitle">OF COMPLETION</p>
 
+    <!-- Date of Completion -->
+    <p class="date-line">Awarded on: <strong id="completion-date">December 10, 2025</strong></p>
+
     <!-- Recipient Line -->
     <div class="recipient-line">
       <span>is presented to :</span><br><br>
@@ -321,6 +326,17 @@
   </div>
 
   <script>
+    // ========== SUPABASE & CORE LOGIC ==========
+    let supabaseClient;
+    let userId = localStorage.getItem('user_id') || `user_${Date.now()}`;
+
+    // Fixed: Removed trailing spaces
+    const supabaseUrl = 'https://hzzytpbltwdvnmpmmfvl.supabase.co';
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6enl0cGJsdHdkdm5tcG1tZmZ2bCIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU5NTYxNDA0LCJleHAiOjIwNzUxMzc0MDR9.RgqO4CThb9NRYUJ8C0DRULytnephMgvZW2Zz5E312iI';
+
+    // Initialize Supabase client
+    supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
     // Generate unique verification code
     function generateVerificationCode(userNumber = '001') {
       const year = new Date().getFullYear();
@@ -331,8 +347,15 @@
     function getUrlParams() {
       const params = new URLSearchParams(window.location.search);
       return {
-        name: params.get('name') || 'Alvin M. Silva'
+        name: params.get('name') || 'Alvin M. Silva',
+        date: params.get('date') || new Date().toISOString().split('T')[0]
       };
+    }
+
+    // Format date as "December 10, 2025"
+    function formatDate(isoDate) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(isoDate).toLocaleDateString('en-US', options);
     }
 
     // Generate QR Code
@@ -345,39 +368,57 @@
       });
     }
 
+    // Save certificate record to Supabase
+    async function saveCertificateToSupabase(name, date, verCode) {
+      try {
+        const { data, error } = await supabaseClient
+          .from('certificates')
+          .insert([
+            {
+              user_id: userId,
+              full_name: name,
+              completion_date: date,
+              verification_code: verCode,
+              issued_at: new Date().toISOString()
+            }
+          ])
+          .select();
+
+        if (error) throw error;
+        console.log('Certificate saved to Supabase:', data);
+      } catch (err) {
+        console.error('Supabase save failed:', err.message);
+      }
+    }
+
     // Download as PDF
     function downloadPDF() {
       const { jsPDF } = window.jspdf;
-      
       html2canvas(document.getElementById('certificate'), {
         scale: 2,
         useCORS: true,
         allowTaint: true
       }).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF({
-          orientation: 'landscape',
-          unit: 'mm',
-          format: 'a4'
-        });
-        
+        const pdf = new jsPDF('l', 'mm', 'a4');
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        
         pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
         pdf.save(`Certificate_${new Date().toISOString().slice(0,10)}.pdf`);
       });
     }
 
     // Initialize certificate
-    document.addEventListener('DOMContentLoaded', () => {
-      const { name } = getUrlParams();
+    document.addEventListener('DOMContentLoaded', async () => {
+      const { name, date } = getUrlParams();
+      const formattedDate = formatDate(date);
 
-      // Set recipient name
-      document.getElementById('recipient-name').textContent = name;
+      // Set DOM content
+      document.getElementById('recipient-name').textContent = name.toUpperCase();
+      document.getElementById('completion-date').textContent = formattedDate;
 
-      // Generate verification code
+      // Generate or retrieve verification code
       let userNumber = localStorage.getItem('userNumber') || '001';
       const verCode = generateVerificationCode(userNumber);
       document.getElementById('verification-code').textContent = verCode;
@@ -389,6 +430,9 @@
       localStorage.setItem('courseCompleted', 'true');
       localStorage.setItem('certificateGenerated', 'true');
       localStorage.setItem('userNumber', userNumber);
+
+      // Save to Supabase
+      await saveCertificateToSupabase(name, date, verCode);
     });
   </script>
 </body>
