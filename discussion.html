@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Discussions | Cognitio+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Discussion-specific styles */
+        .discussion-container {
+            display: flex;
+            gap: 30px;
+            padding: 40px 0;
+        }
+        
+        .discussion-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        
+        .discussion-main {
+            flex: 1;
+        }
+        
+        .discussion-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+        
+        .discussion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .discussion-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .discussion-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .discussion-content {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .discussion-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .action-btn:hover {
+            color: var(--primary);
+        }
+        
+        .new-discussion-form {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group select,
+        .form-group textarea {
+            width: 10; /* Full width */
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .module-filter {
+            margin-bottom: 20px;
+        }
+        
+        .module-filter select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        
+        .reflection-count {
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        
+        .no-discussions {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .accessibility-notice {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="https://appimize.app/assets/apps/user_1097/images/b2e254093bca_935_1097.png" alt="Cognitio+ Logo" class="logo">
+                    <div class="site-title">Mental Health Paraprofessional Certification</div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showVerificationModal()">Verify Certificate</button>
+                    <button class="btn btn-primary" onclick="showPurchaseModal()">Get Certified - ₱1,500</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Course Discussions & Reflections</h1>
+            <p>Share your insights, ask questions, and learn from fellow paraprofessionals</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="discussion-container">
+            <!-- Sidebar -->
+            <aside class="discussion-sidebar">
+                <div class="discussion-card">
+                    <h3>Discussion Topics</h3>
+                    <div class="module-filter">
+                        <select id="moduleFilter" onchange="filterDiscussions()">
+                            <option value="all">All Modules</option>
+                            <option value="course">Course-Wide</option>
+                            <option value="module0">Module 0: Orientation</option>
+                            <option value="module1">Module 1: Foundations</option>
+                            <option value="module2">Module 2: Ethics</option>
+                            <option value="module3">Module 3: PFA</option>
+                            <option value="module4">Module 4: Communication</option>
+                            <option value="module5">Module 5: Crisis Intervention</option>
+                            <option value="module6">Module 6: Cultural Sensitivity</option>
+                            <option value="module7">Module 7: Self-Care</option>
+                            <option value="module8">Module 8: Practicum</option>
+                            <option value="module9">Module 9: Certification</option>
+                        </select>
+                    </div>
+                    <div class="accessibility-notice">
+                        <strong>Accessibility Note:</strong> All discussions are moderated for respectful communication. We encourage inclusive language and psychological safety.
+                    </div>
+                </div>
+                
+                <div class="discussion-card">
+                    <h3>Participation Guidelines</h3>
+                    <ul>
+                        <li>Use person-first language</li>
+                        <li>Respect confidentiality (don't share client details)</li>
+                        <li>Be supportive and non-judgmental</li>
+                        <li>Focus on learning, not debating</li>
+                        <li>Report inappropriate content using the flag button</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Discussion Area -->
+            <main class="discussion-main">
+                <div class="discussion-card">
+                    <h2>Share Your Reflection</h2>
+                    <div class="form-group">
+                        <label for="discussionModule">Module/Topic</label>
+                        <select id="discussionModule" required>
+                            <option value="course">Course-Wide Discussion</option>
+                            <option value="module0">Module 0: Orientation</option>
+                            <option value="module1">Module 1: Foundations</option>
+                            <option value="module2">Module 2: Ethics</option>
+                            <option value="module3">Module 3: PFA</option>
+                            <option value="module4">Module 4: Communication</option>
+                            <option value="module5">Module 5: Crisis Intervention</option>
+                            <option value="module6">Module 6: Cultural Sensitivity</option>
+                            <option value="module7">Module 7: Self-Care</option>
+                            <option value="module8">Module 8: Practicum</option>
+                            <option value="module9">Module 9: Certification</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="discussionContent">Your Reflection or Question</label>
+                        <textarea id="discussionContent" placeholder="Share your insights, questions, or experiences related to this module..." required></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="submitDiscussion()">Post Reflection</button>
+                </div>
+
+                <div id="discussionsContainer">
+                    <!-- Discussions will be loaded here dynamically -->
+                    <div class="no-discussions">No reflections yet. Be the first to share!</div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Cognitio+. All Rights Reserved.</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                For support, contact: <a href="mailto:hello@cognitioplus.com">hello@cognitioplus.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize discussions on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDiscussions();
+        });
+
+        // Load discussions from backend
+        async function loadDiscussions(moduleFilter = 'all') {
+            try {
+                const response = await fetch(`/api/discussions?module=${moduleFilter}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load discussions');
+                }
+                
+                const discussions = await response.json();
+                renderDiscussions(discussions);
+            } catch (error) {
+                console.error('Error loading discussions:', error);
+                document.getElementById('discussionsContainer').innerHTML = 
+                    `<div class="error-message">Failed to load discussions. Please try again later.</div>`;
+            }
+        }
+
+        // Filter discussions by module
+        function filterDiscussions() {
+            const moduleFilter = document.getElementById('moduleFilter').value;
+            loadDiscussions(moduleFilter);
+        }
+
+        // Submit a new discussion
+        async function submitDiscussion() {
+            const module = document.getElementById('discussionModule').value;
+            const content = document.getElementById('discussionContent').value.trim();
+            
+            if (!content) {
+                alert('Please enter your reflection or question.');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/discussions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    },
+                    body: JSON.stringify({ module, content })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to post reflection');
+                }
+                
+                // Clear form and reload discussions
+                document.getElementById('discussionContent').value = '';
+                loadDiscussions(document.getElementById('moduleFilter').value);
+            } catch (error) {
+                console.error('Error posting discussion:', error);
+                alert('Failed to post your reflection. Please try again.');
+            }
+        }
+
+        // Render discussions in the UI
+        function renderDiscussions(discussions) {
+            if (discussions.length === 0) {
+                document.getElementById('discussionsContainer').innerHTML = 
+                    '<div class="no-discussions">No reflections yet. Be the first to share!</div>';
+                return;
+            }
+            
+            const discussionsHtml = discussions.map(discussion => `
+                <div class="discussion-card">
+                    <div class="discussion-header">
+                        <div class="discussion-title">${discussion.module_title}</div>
+                        <div class="discussion-actions">
+                            <button class="action-btn" onclick="likeDiscussion('${discussion.id}')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                ${discussion.likes_count || 0}
+                            </button>
+                            <button class="action-btn" onclick="flagDiscussion('${discussion.id}')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                    <line x1="4" y1="22" x2="4" y2="15"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="discussion-meta">
+                        By ${discussion.user_name} • ${new Date(discussion.created_at).toLocaleDateString()}
+                    </div>
+                    <div class="discussion-content">
+                        ${discussion.content}
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('discussionsContainer').innerHTML = discussionsHtml;
+        }
+
+        // Like a discussion
+        async function likeDiscussion(discussionId) {
+            try {
+                const response = await fetch(`/api/discussions/${discussionId}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+                
+                if (response.ok) {
+                    // Reload discussions to update like count
+                    loadDiscussions(document.getElementById('moduleFilter').value);
+                }
+            } catch (error) {
+                console.error('Error liking discussion:', error);
+            }
+        }
+
+        // Flag a discussion for moderation
+        async function flagDiscussion(discussionId) {
+            if (confirm('Are you sure you want to flag this post for review?')) {
+                try {
+                    const response = await fetch(`/api/discussions/${discussionId}/flag`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        alert('Post has been flagged for review by moderators.');
+                    }
+                } catch (error) {
+                    console.error('Error flagging discussion:', error);
+                    alert('Failed to flag post. Please try again.');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+              <script>
+                              // discussionRoutes.js
+const express = require('express');
+const { Pool } = require('pg');
+const jwt = require('jsonwebtoken');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const cors = require('cors');
+const { body, validationResult } = require('express-validator');
+
+const router = express.Router();
+
+// Database connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+// Security middleware
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+
+// Middleware to verify JWT token
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  if (!token) {
+    return res.status(401).json({ error: 'Access token required' });
+  }
+  
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Invalid or expired token' });
+    }
+    req.user = user;
+    next();
+  });
+};
+
+// Middleware to check if user exists in database
+const checkUserExists = async (req, res, next) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT id FROM users WHERE id = $1',
+      [req.user.id]
+    );
+    
+    if (rows.length === 0) {
+      // Create user if they don't exist
+      await pool.query(
+        'INSERT INTO users (id, email, full_name) VALUES ($1, $2, $3)',
+        [req.user.id, req.user.email, req.user.full_name || '']
+      );
+    }
+    
+    next();
+  } catch (error) {
+    console.error('Error checking user:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Get discussions with optional module filter
+router.get('/', limiter, authenticateToken, checkUserExists, async (req, res) => {
+  try {
+    const { module = 'all' } = req.query;
+    let query = `
+      SELECT 
+        d.id,
+        d.module_id,
+        m.title as module_title,
+        d.user_id,
+        u.full_name as user_name,
+        d.content,
+        d.created_at,
+        COUNT(dl.user_id) as likes_count
+      FROM discussions d
+      JOIN modules m ON d.module_id = m.id
+      JOIN users u ON d.user_id = u.id
+      LEFT JOIN discussion_likes dl ON d.id = dl.discussion_id
+      WHERE d.is_flagged = false
+    `;
+    const params = [];
+    
+    if (module !== 'all') {
+      query += ' AND d.module_id = $1';
+      params.push(module);
+    }
+    
+    query += `
+      GROUP BY d.id, m.title, u.full_name
+      ORDER BY d.created_at DESC
+      LIMIT 50
+    `;
+    
+    if (module !== 'all') {
+      params.push(module);
+    }
+    
+    const { rows } = await pool.query(query, params);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error fetching discussions:', error);
+    res.status(500).json({ error: 'Failed to fetch discussions' });
+  }
+});
+
+// Create a new discussion
+router.post('/', 
+  limiter,
+  authenticateToken,
+  checkUserExists,
+  body('module').isLength({ min: 1, max: 20 }).trim(),
+  body('content').isLength({ min: 10, max: 2000 }).trim(),
+  async (req, res) => {
+    // Validate input
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        error: 'Invalid input', 
+        details: errors.array() 
+      });
+    }
+    
+    const { module, content } = req.body;
+    
+    // Sanitize content (prevent XSS)
+    const sanitizedContent = content
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/(\r\n|\n|\r)/g, "<br>");
+    
+    try {
+      const { rows } = await pool.query(
+        `INSERT INTO discussions (module_id, user_id, content)
+         VALUES ($1, $2, $3)
+         RETURNING id, module_id, user_id, content, created_at`,
+        [module, req.user.id, sanitizedContent]
+      );
+      
+      res.status(201).json(rows[0]);
+    } catch (error) {
+      console.error('Error creating discussion:', error);
+      res.status(500).json({ error: 'Failed to create discussion' });
+    }
+  }
+);
+
+// Like a discussion
+router.post('/:id/like', limiter, authenticateToken, checkUserExists, async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    // Check if discussion exists and isn't flagged
+    const { rows: discussionRows } = await pool.query(
+      'SELECT id FROM discussions WHERE id = $1 AND is_flagged = false',
+      [id]
+    );
+    
+    if (discussionRows.length === 0) {
+      return res.status(404).json({ error: 'Discussion not found' });
+    }
+    
+    // Check if user already liked this discussion
+    const { rows: likeRows } = await pool.query(
+      'SELECT 1 FROM discussion_likes WHERE discussion_id = $1 AND user_id = $2',
+      [id, req.user.id]
+    );
+    
+    if (likeRows.length > 0) {
+      // Unlike if already liked
+      await pool.query(
+        'DELETE FROM discussion_likes WHERE discussion_id = $1 AND user_id = $2',
+        [id, req.user.id]
+      );
+      return res.json({ message: 'Unliked successfully' });
+    }
+    
+    // Like the discussion
+    await pool.query(
+      'INSERT INTO discussion_likes (discussion_id, user_id) VALUES ($1, $2)',
+      [id, req.user.id]
+    );
+    
+    res.json({ message: 'Liked successfully' });
+  } catch (error) {
+    console.error('Error liking discussion:', error);
+    res.status(500).json({ error: 'Failed to like discussion' });
+  }
+});
+
+// Flag a discussion for moderation
+router.post('/:id/flag', limiter, authenticateToken, checkUserExists, async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    // Check if discussion exists
+    const { rows: discussionRows } = await pool.query(
+      'SELECT id, user_id FROM discussions WHERE id = $1',
+      [id]
+    );
+    
+    if (discussionRows.length === 0) {
+      return res.status(404).json({ error: 'Discussion not found' });
+    }
+    
+    // Prevent users from flagging their own discussions
+    if (discussionRows[0].user_id === req.user.id) {
+      return res.status(400).json({ error: 'You cannot flag your own discussion' });
+    }
+    
+    // Flag the discussion
+    await pool.query(
+      `UPDATE discussions 
+       SET is_flagged = true, flagged_by = $1, flagged_at = NOW()
+       WHERE id = $2`,
+      [req.user.id, id]
+    );
+    
+    res.json({ message: 'Discussion flagged for review' });
+  } catch (error) {
+    console.error('Error flagging discussion:', error);
+    res.status(500).json({ error: 'Failed to flag discussion' });
+  }
+});
+
+module.exports = router;
+
+// server.js
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const discussionRoutes = require('./discussionRoutes');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Security middleware
+app.use(helmet());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true
+}));
+app.use(morgan('combined'));
+
+// Body parsing middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
+
+// API routes
+app.use('/api/discussions', discussionRoutes);
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Discussion API server running on port ${PORT}`);
+});
+
+// auth.js - Authentication helper functions
+const jwt = require('jsonwebtoken');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+// Generate JWT token for user
+function generateAuthToken(user) {
+  return jwt.sign(
+    { 
+      id: user.id, 
+      email: user.email,
+      full_name: user.full_name
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+}
+
+// Verify and decode JWT token
+function verifyAuthToken(token) {
+  try {
+    return jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
+    return null;
+  }
+}
+
+// Get user profile
+async function getUserProfile(userId) {
+  try {
+    const { rows } = await pool.query(
+      'SELECT id, email, full_name, role FROM users WHERE id = $1',
+      [userId]
+    );
+    return rows[0] || null;
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    return null;
+  }
+}
+
+module.exports = {
+  generateAuthToken,
+  verifyAuthToken,
+  getUserProfile
+};
+
+              </script>
+                        </body>
+                        </html>
