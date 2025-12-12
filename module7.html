@@ -131,12 +131,61 @@
       font-weight: 600;
       transition: background 0.3s;
       white-space: nowrap;
+      border: none; /* Add border none for button elements */
+      cursor: pointer; /* Add cursor pointer for button elements */
     }
 
     .btn:hover {
       background: var(--primary-light);
     }
 
+    /* === CERTIFICATE NOTICE STYLES === */
+    .certificate-notice {
+      background: var(--primary);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .certificate-notice h2 {
+      color: var(--accent); /* Use gold accent color for the title */
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    .certificate-notice ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      display: inline-block;
+      margin: 15px auto 25px;
+    }
+
+    .certificate-notice ul li {
+      margin: 8px 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    .notice-btn {
+      background: var(--accent); /* Use gold accent for high contrast button */
+      color: var(--text-dark);
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 30px;
+    }
+
+    .notice-btn:hover {
+      background: #e0b43b;
+    }
+    
+    /* === NAVIGATION STYLES === */
     .navigation {
       display: flex;
       flex-wrap: wrap;
@@ -168,7 +217,6 @@
     <h1>Module 7: Self-Care and Resilience</h1>
     <p><strong>Duration:</strong> 3 hours</p>
 
-    <!-- Lesson 7.1 -->
     <h2>7.1 Paraprofessional Self-Care</h2>
     
     <div class="video-container">
@@ -261,7 +309,6 @@
       <li>Continue learning</li>
     </ul>
 
-    <!-- Lesson 7.2 -->
     <h2>7.2 Cognitio+ Digital Resilience Tools</h2>
     <p>Utilize these tools for ongoing self-monitoring and support:</p>
 
@@ -325,7 +372,6 @@
       <a href="https://cognitioplus.aiwaapp.live/resilience-navigator/" target="_blank" class="btn">Access Resilience Navigator →</a>
     </div>
 
-    <!-- Lesson 7.3 -->
     <h2>7.3 Personal Self-Care Plan</h2>
     <h3>Creating Your Personal Self-Care Plan</h3>
     <ol>
@@ -336,10 +382,25 @@
       <li>Review and adjust monthly</li>
     </ol>
 
-    <!-- Navigation -->
+    <div class="certificate-notice">
+        <h2>🎉 Congratulations! Coursework Complete!</h2>
+        <p>You have successfully finished the entire free track of the Certification Course (Modules 0-7).</p>
+        
+        <ul>
+            <li>✅ Unlock Your Official, Verified Certificate</li>
+            <li>✅ Gain Access to Module 8: Practicum & Mentorship</li>
+            <li>✅ Secure Your Permanent Record in our Database</li>
+        </ul>
+
+        <p><strong>Proceed now to get certified and officially conclude your training.</strong></p>
+
+        <button id="final-completion-btn" class="btn notice-btn" onclick="Module7App.markModuleComplete()">
+            Get Verified Certificate & Access Practicum (₱1,500)
+        </button>
+    </div>
     <div class="navigation">
       <a href="module6.html" class="btn">← Module 6</a>
-      <button id="mark-complete-btn" class="btn" style="display: none;" onclick="Module7App.markModuleComplete()">
+      <button id="mark-complete-btn" class="btn" style="display: none;">
         ✅ Mark Module 7 as Complete
       </button>
     </div>
@@ -356,23 +417,23 @@
           completed.push(lessonId);
           localStorage.setItem('completedLessons', JSON.stringify(completed));
         }
-        checkAndShowMarkCompleteButton();
-      }
-
-      function checkAndShowMarkCompleteButton() {
-        const completed = JSON.parse(localStorage.getItem('completedLessons') || '[]');
-        const allDone = MODULE_7_LESSONS.every(id => completed.includes(id));
-        const btn = document.getElementById('mark-complete-btn');
-        if (btn) btn.style.display = allDone ? 'inline-block' : 'none';
+        // No need to show the old "Mark Complete" button, just ensure lessons are marked
       }
 
       function markModuleComplete() {
+        // 1. Mark all lessons/module 7 as complete
         MODULE_7_LESSONS.forEach(markLessonComplete);
         localStorage.setItem('courseProgress', JSON.stringify({ ...JSON.parse(localStorage.getItem('courseProgress') || '{}'), module7: true }));
-        window.location.href = 'module8.html';
+        
+        // 2. Redirect to the certificate page, which now acts as the payment gate
+        // We can optionally pass the user's name/date if known to pre-fill the certificate page
+        const userName = localStorage.getItem('user_name') || 'Trainee Name';
+        const completionDate = new Date().toISOString().split('T')[0];
+        
+        window.location.href = `certificate.html?name=${encodeURIComponent(userName)}&date=${completionDate}`;
       }
 
-      // Initialize: auto-mark all lessons complete on load
+      // Initialize: auto-mark all lessons complete on load (for consistent progress tracking)
       function init() {
         MODULE_7_LESSONS.forEach(markLessonComplete);
       }
