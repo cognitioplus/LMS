@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certification Course for Mental Health and Well-Being Paraprofessional | Cognitio+</title>
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
     
-    <!-- Inline Critical CSS -->
     <style>
         :root {
             --primary: #b425aa;
@@ -66,6 +64,11 @@
             background-color: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
         }
 
         .btn-accent {
@@ -195,17 +198,15 @@
         }
         
         /* Modules Banner */
-.modules-banner {
-    width: 100%;
-    height: 177px; /* adjust height as needed */
-    background-image: url('https://cognitioplus.aiwaapp.live/cache/media_cache/ad5ecb8027d304ccfaef1e1773cae67b.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; /* ensures the image fills the entire section */
-    margin-bottom: 0;
-    border-radius: 0;
-}
-
+        .modules-banner {
+            width: 100%;
+            height: 177px; /* adjust height as needed */
+            background-image: url('https://cognitioplus.aiwaapp.live/cache/media_cache/ad5ecb8027d304ccfaef1e1773cae67b.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; /* ensures the image fills the entire section */
+            margin-bottom: 0;
+            border-radius: 0;
         }
 
         /* Footer */
@@ -245,7 +246,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -258,14 +258,16 @@
                     <div class="site-title">Mental Health Paraprofessional Certification</div>
                 </div>
                 <div class="nav-buttons">
+                    <a href="https://cognitioplus.aiwaapp.live/paraprofessional-hub/" target="_blank" class="btn btn-secondary">Paraprofessional Hub</a>
+                    
                     <button class="btn btn-secondary" onclick="indexApp.showVerificationModal()">Verify Certificate</button>
-                    <button class="btn btn-primary" onclick="indexApp.showPurchaseModal()">Get Certified - ₱1,500</button>
+                    
+                    <a href="certificate.html" class="btn btn-primary">Get Certified - ₱1,500</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Certification Course for Mental Health and Well-Being Paraprofessionals</h1>
@@ -278,12 +280,10 @@
         </div>
     </section>
 
-    <!-- New Detailed Course Overview Section (I, II, III, IV) -->
     <section class="course-overview" id="overview" style="background: white; padding: 60px 0;">
         <div class="container">
             <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">Course Deep Dive</h2>
 
-            <!-- I. Course Overview -->
             <div class="overview-card">
                 <h3>I. Course Overview: Purpose, Frameworks, and Philosophy</h3>
                 <p><strong>Purpose:</strong> This certification course equips the learner with the essential knowledge, values, and practical skills to provide safe, ethical, and compassionate peer-based psychosocial support online and in community contexts.</p>
@@ -304,7 +304,6 @@
                 <p><strong>Course Philosophy:</strong> The course applies Psychological First Aid (PFA) principles—Look, Listen, Link—and builds foundational competencies in empathy, communication, and referral, ensuring participants can respond to mental health needs safely within their scope.</p>
             </div>
 
-            <!-- II. Certification Structure -->
             <div class="overview-card">
                 <h3>II. Certification Structure</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed;">
@@ -347,7 +346,6 @@
                 </table>
             </div>
 
-            <!-- III. Course Learning Outcomes -->
             <div class="overview-card">
                 <h3>III. Course Learning Outcomes</h3>
                 <p>Upon completion, trainees will be able to:</p>
@@ -361,7 +359,6 @@
                 </ol>
             </div>
 
-            <!-- IV. Competency Domains -->
             <div class="overview-card">
                 <h3>IV. Competency Domains</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 15px 0; table-layout: fixed;">
@@ -404,18 +401,15 @@
         </div>
     </section>
 
-    <!-- V. Course Modules Navigation Section -->
     <section class="modules-section" id="modules" style="padding: 60px 0; background: var(--bg-light);">
         <div class="container">
             <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">V. Course Modules</h2>
         
             <div class="module-grid" id="module-grid">
-                <!-- Modules will be injected by JS -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- VI. Assessment Framework -->
     <section class="assessment-section" style="padding: 60px 0; background: white;">
         <div class="container">
             <div class="overview-card">
@@ -454,7 +448,6 @@
                 <p style="font-weight: 700; color: var(--primary);">Passing Grade: 75% overall</p>
             </div>
             
-            <!-- VII. Certification and Integraton -->
             <div class="overview-card">
                 <h3>VII. Certification and Integration</h3>
                 <p><strong>Validity:</strong> 2 years</p>
@@ -467,7 +460,6 @@
         </div>
     </section>
 
-    <!-- VIII. Required References -->
     <section class="references-section" id="references" style="padding: 60px 0; background: var(--bg-light);">
         <div class="container">
             <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">VIII. Required References</h2>
@@ -494,7 +486,6 @@
         </div>
     </section>
 
-    <!-- IX. Course Discussion -->
     <section class="discussion-section" id="discussion" style="padding: 60px 0 0 0; background: white;">
         <div class="container">
             <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-weight: 700;">IX. Discussions</h2>
@@ -504,7 +495,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Cognitio+. All Rights Reserved.</p>
@@ -513,19 +503,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- Modals -->
-    <div class="modal" id="purchaseModal">
-        <div style="background: white; padding: 30px; border-radius: 12px; max-width: 400px; width: 90%;">
-            <h3 style="color: var(--primary); margin-top: 0;">Complete Your Certification</h3>
-            <p>Unlock your verified certificate and practicum access.</p>
-            <div style="margin: 20px 0; padding: 15px; background: var(--bg-light); border-radius: 8px;">
-                <strong>Price: ₱1,500</strong>
-            </div>
-            <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Proceed to Payment</button>
-            <button class="btn btn-secondary" style="width: 100%;" onclick="indexApp.closePurchaseModal()">Cancel</button>
-        </div>
-    </div>
 
     <div class="modal" id="verificationModal">
         <div style="background: white; padding: 30px; border-radius: 12px; max-width: 400px; width: 90%;">
@@ -579,6 +556,20 @@
                     const completed = lessons.filter(l => isLessonCompleted(l)).length;
                     const progress = lessons.length ? Math.round((completed / lessons.length) * 100) : 0;
                     
+                    // Determine if module 8 and 9 should be "locked"
+                    let isCertifiedContent = mod.id === 'module8' || mod.id === 'module9';
+                    let courseProgress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+                    let accessGranted = courseProgress.certified; // Check if the user is certified/paid
+
+                    let buttonHtml = '';
+                    if (isCertifiedContent && !accessGranted) {
+                        // For Module 8 and 9, if not certified, link to the certificate page/payment gate
+                        buttonHtml = `<a href="certificate.html" class="btn btn-secondary" style="background-color: var(--accent); color: var(--text-dark);">🔒 Get Certified to Unlock</a>`;
+                    } else {
+                        // For modules 0-7, or if certified, provide the direct link
+                        buttonHtml = `<a href="${mod.file}" class="btn btn-primary">Go to ${mod.id.replace('module', 'Module ')}</a>`;
+                    }
+
                     const card = document.createElement('div');
                     card.className = 'module-card';
                     card.innerHTML = `
@@ -587,8 +578,9 @@
                             <p style="font-weight:600; color:var(--primary);">Duration: ${mod.duration}</p>
                             <p><strong>Progress:</strong> ${completed}/${lessons.length} lessons (${progress}%)</p>
                             ${progress === 100 ? '<span style="color:#4caf50; font-weight:bold;">✅ Completed</span>' : ''}
+                            ${isCertifiedContent && !accessGranted ? '<span style="color:#f44336; font-weight:bold; display:block; margin-top:5px;">(Requires Verified Certificate)</span>' : ''}
                         </div>
-                        <a href="${mod.file}" class="btn btn-primary">Go to ${mod.id.replace('module', 'Module ')}</a>
+                        ${buttonHtml}
                     `;
                     grid.appendChild(card);
                 });
@@ -603,13 +595,7 @@
                 document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });
             }
 
-            function showPurchaseModal() {
-                document.getElementById('purchaseModal').classList.add('active');
-            }
-
-            function closePurchaseModal() {
-                document.getElementById('purchaseModal').classList.remove('active');
-            }
+            // showPurchaseModal and closePurchaseModal removed, as the main button now links directly.
 
             function showVerificationModal() {
                 document.getElementById('verificationModal').classList.add('active');
@@ -623,7 +609,7 @@
                 const code = document.getElementById('verifyCode').value.trim();
                 const result = document.getElementById('verificationResult');
                 if (code) {
-                    result.innerHTML = `<div style="color: var(--success); font-weight: bold;">Verification simulated. In production, this checks Supabase.</div>`;
+                    result.innerHTML = `<div style="color: #4caf50; font-weight: bold;">Verification simulated. In production, this checks Supabase.</div>`;
                 } else {
                     result.innerHTML = `<div style="color: #f44336;">Please enter a verification code.</div>`;
                 }
@@ -632,22 +618,14 @@
             return {
                 init,
                 scrollToModules,
-                showPurchaseModal,
-                closePurchaseModal,
                 showVerificationModal,
                 closeVerificationModal,
                 verifyCertificate
             };
         })();
 
+        // Run on DOM load
         document.addEventListener('DOMContentLoaded', indexApp.init);
-
-        window.addEventListener('click', e => {
-            if (e.target.classList.contains('modal')) {
-                indexApp.closePurchaseModal();
-                indexApp.closeVerificationModal();
-            }
-        });
     </script>
 </body>
 </html>
